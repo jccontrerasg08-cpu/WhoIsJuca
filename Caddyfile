@@ -1,0 +1,60 @@
+:{$PORT:80} {
+
+	# ── Root & file serving ──────────────────────────────────────────────────
+	root * /app/public
+	file_server {
+		# Disable directory listing — never expose file trees
+		hide .git
+	}
+
+	# ── Security headers ─────────────────────────────────────────────────────
+	header {
+		# Prevent MIME-type sniffing
+		X-Content-Type-Options "nosniff"
+
+		# Block the page from being embedded in any frame (clickjacking)
+		X-Frame-Options "DENY"
+
+		# Legacy XSS filter for older browsers
+		X-XSS-Protection "1; mode=block"
+
+		# Control how much referrer info is sent
+		Referrer-Policy "strict-origin-when-cross-origin"
+
+		# Restrict access to powerful browser features
+		Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+
+		# Enforce HTTPS for 1 year (including subdomains); allow preload
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+		# Content Security Policy — no inline scripts, no external resources
+		# Adjust the style-src hash/nonce if you add inline styles later
+		Content-Security-Policy "default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+
+		# Remove the Server header so Caddy's identity is not disclosed
+		-Server
+	}
+
+	# ── Cache control for static assets ──────────────────────────────────────
+	# Fingerprinted assets (JS, CSS, images, fonts) — cache aggressively
+	@staticAssets {
+		path *.js *.css *.woff *.woff2 *.ttf *.otf *.ico *.png *.jpg *.jpeg *.gif *.svg *.webp *.avif
+	}
+	header @staticAssets Cache-Control "public, max-age=31536000, immutable"
+
+	# HTML documents — always revalidate so updates are picked up immediately
+	@htmlFiles {
+		path *.html
+	}
+	header @htmlFiles Cache-Control "no-cache, no-store, must-revalidate"
+
+	# Root path (serves index.html) — same revalidation policy
+	@rootPath {
+		path /
+	}
+	header @rootPath Cache-Control "no-cache, no-store, must-revalidate"
+
+	# ── Encode responses ─────────────────────────────────────────────────────
+	encode gzip
+
+}
