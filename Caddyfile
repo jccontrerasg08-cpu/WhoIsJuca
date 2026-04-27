@@ -1,7 +1,7 @@
 :{$PORT:80} {
 
 	# ── Root & file serving ──────────────────────────────────────────────────
-	root * /app/public
+	root * /app
 	file_server {
 		# Disable directory listing — never expose file trees
 		hide .git
