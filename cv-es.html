@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Juan Carlos Contreras Gastélum — Currículum</title>
+<meta name="author" content="Juan Carlos Contreras Gastélum" />
+<meta name="description" content="Juan Carlos Contreras Gastélum — Estudiante de Negocios Globales en el Tecnológico de Monterrey con concentración en Análisis de Datos y Herramientas de IA. Desarrollador de software (Python, FastAPI, SQL) y analista de datos. Bilingüe español-inglés." />
+<meta name="keywords" content="Análisis de datos, Data Analytics, Python, SQL, FastAPI, Playwright, scikit-learn, Tableau, Machine Learning, Negocios Globales, Comercio Internacional, Aduanas, SAP, CFDI, Bilingüe, Monterrey, México" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --ink: #0f172a;
+    --muted: #475569;
+    --soft: #94a3b8;
+    --line: #cbd5e1;
+    --accent: #1e3a8a;
+    --bg: #ffffff;
+    --tag-bg: #f1f5f9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #e2e8f0; }
+  body {
+    font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+    color: var(--ink);
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    padding: 76px 16px 24px;
+    display: flex;
+    justify-content: center;
+    font-size: calc(1em * var(--font-scale, 1));
+  }
+  .page {
+    width: 8.5in;
+    height: 11in;
+    background: var(--bg);
+    padding: 0.25in 0.4in;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    font-size: 8.5pt;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .toolbar {
+    position: fixed;
+    top: 16px; right: 16px;
+    display: flex; gap: 8px;
+    background: white;
+    padding: 8px;
+    border-radius: 999px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    z-index: 100;
+  }
+  .toolbar a, .toolbar button {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--tag-bg);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .toolbar a:hover, .toolbar button:hover { background: var(--accent); color: white; }
+
+  .head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    align-items: end;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .name {
+    font-family: var(--font-head, 'Newsreader', serif);
+    font-size: 20pt;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .title {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin-top: 3px;
+    font-weight: 500;
+  }
+  .contact {
+    text-align: right;
+    font-size: 8.5pt;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .contact a { color: var(--ink); text-decoration: none; }
+  .contact a:hover { color: var(--accent); }
+  .contact .row { display: flex; gap: 6px; align-items: center; justify-content: flex-end; }
+  .contact .label-mini {
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--soft);
+  }
+
+  section { margin-top: 16px; }
+  h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 7px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .profile-text {
+    font-size: 7.5pt;
+    line-height: 1.3;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .profile-text strong { color: var(--accent); font-weight: 600; }
+
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 12px;
+  }
+  .body > div {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .body section { margin-top: 0; }
+
+  .entry { margin-bottom: 7px; }
+  .entry:last-child { margin-bottom: 0; }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 2px;
+  }
+  .entry-role {
+    font-weight: 600;
+    font-size: 8.5pt;
+    color: var(--ink);
+  }
+  .entry-date {
+    font-size: 7pt;
+    color: var(--soft);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .entry-org {
+    font-size: 7.5pt;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 3px;
+  }
+  .entry-desc {
+    font-size: 7.5pt;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .entry-desc ul { list-style: none; padding: 0; }
+  .entry-desc li {
+    padding-left: 8px;
+    position: relative;
+    margin-bottom: 0;
+    line-height: 1.25;
+  }
+  .entry-desc li::before {
+    content: '·';
+    position: absolute;
+    left: 2px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .entry-desc li.gpa-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    padding-left: 9px;
+  }
+  .entry-desc li.gpa-row::before { content: '·'; }
+  .entry-desc li.gpa-row strong { white-space: nowrap; }
+
+  .skill-block { margin-bottom: 2px; }
+  .skill-block:last-child { margin-bottom: 0; }
+  .skill-label {
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 1px;
+  }
+  .skill-tags {
+    font-size: 8pt;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+  .skill-tags span { color: var(--ink); }
+  .skill-tags span:not(:last-child)::after {
+    content: ' · ';
+    color: var(--soft);
+  }
+
+  .proj {
+    padding: 2px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .proj:last-child { border-bottom: none; }
+  .proj-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 1px;
+  }
+  .proj-name { font-weight: 600; font-size: 8.5pt; }
+  .proj-stack { font-size: 7.5pt; color: var(--accent); white-space: nowrap; }
+  .proj-desc { font-size: 8pt; color: var(--muted); line-height: 1.35; }
+
+  .lang-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px;
+    align-items: center;
+    padding: 0;
+    font-size: 8pt;
+  }
+  .lang-row .ln { font-weight: 600; min-width: 55px; }
+  .lang-row .lv { color: var(--muted); text-align: right; font-size: 7.5pt; }
+  .lang-bar {
+    height: 4px;
+    background: var(--tag-bg);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .lang-bar .fill { height: 100%; background: var(--accent); border-radius: 2px; }
+
+  @media print {
+    @page { size: letter; margin: 0; }
+    html, body {
+      background: white;
+      padding: 0;
+      margin: 0;
+      width: 8.5in;
+      height: 11in;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      font-size: calc(1em * var(--font-scale, 1));
+    }
+    body { display: block; }
+    .page {
+      box-shadow: none;
+      width: 8.5in;
+      height: 11in;
+      padding: 0.4in 0.4in 0.25in;
+      margin: 0;
+      font-size: 8.5pt;
+      overflow: hidden;
+      page-break-after: avoid;
+    }
+    .toolbar { display: none; }
+    a { color: var(--ink); text-decoration: none; }
+    .body {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 18px !important;
+    }
+    .head {
+      display: grid !important;
+      grid-template-columns: 1fr auto !important;
+    }
+    .contact { text-align: right !important; }
+    .contact .row { justify-content: flex-end !important; }
+    #tweaks-root { display: none !important; }
+  }
+
+  @media screen and (max-width: 720px) {
+    .body { grid-template-columns: 1fr; }
+    .head { grid-template-columns: 1fr; }
+    .contact { text-align: left; }
+    .contact .row { justify-content: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="profile.html">← Sitio</a>
+  <a href="cv-en.html">EN</a>
+  <button onclick="window.print()">↓ Imprimir / PDF</button>
+</div>
+
+<div class="page">
+
+  <header class="head">
+    <div>
+      <h1 class="name">Juan Carlos Contreras Gastélum</h1>
+      <div class="title">Licenciatura en Negocios Globales · Análisis de Datos y Herramientas de IA</div>
+    </div>
+    <div class="contact">
+      <div class="row"><span class="label-mini">CORREO</span> <a href="mailto:jccontrerasg08@gmail.com">jccontrerasg08@gmail.com</a></div>
+      <div class="row"><span class="label-mini">TEL</span> <a href="tel:+526462267777">(646) 226-7777</a></div>
+      <div class="row"><span class="label-mini">UBIC</span> Monterrey, NL · México</div>
+      <div class="row"><span class="label-mini">GITHUB</span> <a href="https://github.com/jccontrerasg08-cpu" target="_blank">github.com/jccontrerasg08-cpu</a></div>
+      <div class="row"><span class="label-mini">LINKEDIN</span> <a href="https://www.linkedin.com/in/juan-carlos-c-a19132211/" target="_blank">linkedin.com/in/juan-carlos-c</a></div>
+    </div>
+  </header>
+
+  <section>
+    <h2>Perfil Profesional</h2>
+    <p class="profile-text">
+      Estudiante de <strong>Negocios Globales</strong> en el Tecnológico de Monterrey con concentración en <strong>Análisis de Datos y Herramientas de IA</strong> y promedio acumulado de <strong>91.76 / 100</strong>. Bilingüe nativo español–inglés (C1 TOEFL / Cambridge). Combino una base en logística, contabilidad y ventas con desarrollo de software en producción: agentes de IA, automatización de navegadores, integración con APIs de terceros y optimización de procesos financieros. Talento diferenciador: convertir datos en decisiones y comunicación cara a cara con clientes y aliados estratégicos.
+    </p>
+  </section>
+
+  <div class="body">
+
+    <!-- LEFT COLUMN -->
+    <div>
+      <section>
+        <h2>Experiencia Profesional</h2>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">Desarrollador · Bot RFA</span>
+            <span class="entry-date">2025 — Presente</span>
+          </div>
+          <div class="entry-org">RFA · Tijuana / Ensenada</div>
+          <div class="entry-desc">
+            <ul>
+              <li>Desarrollo end-to-end del Bot RFA y el sitio web público (FastAPI + Playwright + Docker).</li>
+              <li>Integraciones con WhatsApp Business API, Telegram y el portal CFE/ASI mediante automatización de navegador.</li>
+              <li>Facturación electrónica CFDI 4.0 con timbrado SAT, generación de PDF y envío por correo.</li>
+              <li>Panel de administración con autenticación JWT, rate limiting y cifrado de capturas.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">Director de Patrocinios</span>
+            <span class="entry-date">Ene — Jun 2025</span>
+          </div>
+          <div class="entry-org">Comité de Participación Estudiantil · Tec de Monterrey</div>
+          <div class="entry-desc"><ul><li>Dirige el área de finanzas del comité; gestiona patrocinios para eventos benéficos e iniciativas estudiantiles.</li><li>Coordina prospección y seguimiento de propuestas con empresas locales para asegurar recursos del semestre.</li></ul></div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">Miembro · Tec Consulting Group</span>
+            <span class="entry-date">Sep 2024 — Jun 2025</span>
+          </div>
+          <div class="entry-org">Tec Consulting Club · Tec de Monterrey</div>
+          <div class="entry-desc"><ul><li>Aplica la metodología CRISP-DM en proyectos de consultoría con empresas reales.</li><li>Diagnóstico de datos, propuesta analítica y entrega de hallazgos a stakeholders.</li></ul></div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">Auxiliar Contable</span>
+            <span class="entry-date">Sep 2019 — Ene 2020</span>
+          </div>
+          <div class="entry-org">RFA</div>
+          <div class="entry-desc"><ul><li>Registro de pólizas contables y generación de facturas, nóminas y recibos usando CONTPAQi, SuperCONTABILIDAD y SuperNÓMINA.</li><li>Apoyo en cierre mensual y conciliación de cuentas para una PyME del sector energético.</li></ul></div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">Repartidor y Asociado de Ventas</span>
+            <span class="entry-date">Ene — Ago 2019</span>
+          </div>
+          <div class="entry-org">RFA</div>
+          <div class="entry-desc"><ul><li>Atención a clientes en ruta y distribución de producto en la zona de Ensenada.</li><li>Toma de pedidos y seguimiento a cuentas B2B recurrentes.</li></ul></div>
+        </div>
+      </section>
+
+      
+
+    <section>
+        <h2>Idiomas</h2>
+        <div class="lang-row">
+          <div class="ln">Español</div>
+          <div class="lang-bar"><div class="fill" style="width:100%"></div></div>
+          <div class="lv">Nativo</div>
+        </div>
+        <div class="lang-row">
+          <div class="ln">Inglés</div>
+          <div class="lang-bar"><div class="fill" style="width:100%"></div></div>
+          <div class="lv">Nativo</div>
+        </div>
+        <div class="lang-row">
+          <div class="ln">Francés</div>
+          <div class="lang-bar"><div class="fill" style="width:30%"></div></div>
+          <div class="lv">Básico</div>
+        </div>
+        <div class="lang-row">
+          <div class="ln">Holandés</div>
+          <div class="lang-bar"><div class="fill" style="width:30%"></div></div>
+          <div class="lv">Básico</div>
+        </div>
+      </section><section>
+        <h2>Certificaciones</h2>
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">McKinsey Forward Program</span>
+            <span class="entry-date">2026</span>
+          </div>
+          <div class="entry-desc">Programa de liderazgo, resolución estructurada de problemas y adaptabilidad por McKinsey.org.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">Google Data Analytics</span>
+            <span class="entry-date">2026</span>
+          </div>
+          <div class="entry-desc">Certificado profesional · SQL, R, Tableau y el flujo completo de análisis de datos.</div>
+        </div>
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">SAP Business Analyst</span>
+            <span class="entry-date">2026</span>
+          </div>
+          <div class="entry-desc">Productos SAP, analítica de datos y análisis de procesos de negocio.</div>
+        </div>
+      </section></div>
+
+    <!-- RIGHT COLUMN -->
+    <div>
+      <section>
+        <h2>Educación</h2>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">Vrije Universiteit Amsterdam</span>
+            <span class="entry-date">Ago 2025 — Ene 2026</span>
+          </div>
+          <div class="entry-org">Programa de Intercambio Cultural · Negocios, Administración y Marketing</div>
+          <div class="entry-desc">
+            <ul>
+              <li>Managing Negotiations: Getting to Yes (Avanzado).</li>
+              <li>AI for Business (Avanzado).</li>
+              <li>Habilidades Académicas.</li>
+              <li>Sostenibilidad Global.</li>
+              <li class="gpa-row"><span>Data Structures and Algorithms</span> <strong>7.0 / 10 · 24 ECTS</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">Tecnológico de Monterrey</span>
+            <span class="entry-date">Ago 2022 — Jun 2026</span>
+          </div>
+          <div class="entry-org">Licenciatura en Negocios Globales · Campus Monterrey</div>
+          <div class="entry-desc">
+            <ul>
+              <li>Programa de Talento Académico (becario).</li>
+              <li>Concentración: <strong>Análisis de Datos y Herramientas de IA</strong>.</li>
+              <li>Cursos: Comercio Internacional · Logística Global · Estrategia Empresarial.</li>
+              <li class="gpa-row"><span>Promedio acumulado:</span> <strong>91.76 / 100</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <span class="entry-role">CETYS Preparatoria</span>
+            <span class="entry-date">2019 — 2022</span>
+          </div>
+          <div class="entry-org">Ensenada, BC</div>
+          <div class="entry-desc"><ul><li>Diploma de Estudiante de Excelencia 2020, 2021, 2022.</li><li>Capitán del equipo representativo de fútbol.</li><li>Vocal de la Sociedad de Alumnos · Tesorero del Club Interact CETYS.</li></ul></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Habilidades</h2>
+
+        <div class="skill-block">
+          <div class="skill-label">Datos e IA</div>
+          <div class="skill-tags">
+            <span>Python</span><span>Pandas</span><span>scikit-learn</span><span>SQL</span><span>Tableau</span><span>CRISP-DM</span><span>Random Forest</span><span>SMOTE</span><span>Monte Carlo</span><span>Vibe Coding Cleanup Specialist</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">Backend y Web</div>
+          <div class="skill-tags">
+            <span>FastAPI</span><span>Playwright</span><span>APIs REST</span><span>Docker</span><span>Railway</span><span>SQLite</span><span>Jinja2</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">Negocio y Dominio</div>
+          <div class="skill-tags">
+            <span>Análisis de datos</span><span>Comercio internacional</span><span>Aduanas</span><span>CFDI 4.0 / SAT</span><span>WhatsApp / Telegram API</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">Software</div>
+          <div class="skill-tags">
+            <span>SAP Fiori</span><span>Microsoft Office</span><span>CONTPAQi</span><span>SuperCONTABILIDAD</span><span>SuperNÓMINA</span><span>Visual Studio Code</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <div class="skill-label">Habilidades blandas</div>
+          <div class="skill-tags">
+            <span>Liderazgo</span><span>Oratoria</span><span>Negociación</span><span>Resolución de problemas</span><span>Trabajo en equipo</span>
+          </div>
+        </div>
+      </section>
+
+      
+
+      
+    <section>
+        <h2>Proyectos Destacados</h2>
+
+        <div class="proj">
+          <div class="proj-head">
+            <span class="proj-name">Auto Crédito 2 · Bot RFA</span>
+            <span class="proj-stack">Python · FastAPI · Playwright</span>
+          </div>
+          <div class="proj-desc">Sistema de automatización de crédito con WhatsApp + Telegram, scraping del portal CFE/ASI y facturación electrónica CFDI 4.0. Desplegado en Railway con Docker.</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <span class="proj-name">Stratify · Ximple.co</span>
+            <span class="proj-stack">Python · scikit-learn · Streamlit · Bokeh</span>
+          </div>
+          <div class="proj-desc">Reto Tec21 para la concentración de Análisis de Datos y Herramientas de IA (feb–jun 2025). <strong>Diagnóstico:</strong> análisis exploratorio de la base de aliados de Ximple. <strong>Propuesta:</strong> segmentación KMeans + PCA y modelo predictivo de uso intensivo de crédito (Random Forest + SMOTE, validación cruzada estratificada). <strong>Implementación:</strong> dashboard operativo en Streamlit para el equipo comercial.</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-head">
+            <span class="proj-name">Programa de Ahorro RFA · Web</span>
+            <span class="proj-stack">FastAPI · Jinja2 · HTML · CSS</span>
+          </div>
+          <div class="proj-desc">Sitio público con calculadora de ahorros, formulario de contacto y panel de administración conectado al Bot RFA.</div>
+        </div>
+      </section></div>
+  </div>
+
+</div>
+
+<div id="tweaks-root"></div>
+<script>
+window.__TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#1e3a8a",
+  "fontHeadline": "Newsreader",
+  "fontBody": "Inter",
+  "fontScale": 100,
+  "showProjects": true,
+  "showVolunteer": true
+}/*EDITMODE-END*/;
+</script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+const { useEffect } = React;
+function CvTweaks() {
+  const [t, setTweak] = useTweaks(window.__TWEAK_DEFAULTS);
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty('--accent', t.accent);
+    root.style.setProperty('--font-head', `'${t.fontHeadline}', serif`);
+    root.style.setProperty('--font-body', `'${t.fontBody}', system-ui, sans-serif`);
+    root.style.setProperty('--font-scale', (t.fontScale / 100).toFixed(2));
+    document.querySelectorAll('section').forEach(s => {
+      const h = s.querySelector('h2');
+      if (!h) return;
+      const label = h.textContent.trim();
+      if (label === 'Proyectos Destacados') s.style.display = t.showProjects ? '' : 'none';
+      if (label === 'Certificaciones') s.style.display = t.showVolunteer ? '' : 'none';
+    });
+  }, [t]);
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection title="Color">
+        <TweakColor label="Acento" value={t.accent} onChange={v => setTweak('accent', v)}
+          options={['#1e3a8a','#0f766e','#9f1239','#b45309','#0f172a','#7c3aed']} />
+      </TweakSection>
+      <TweakSection title="Tipografía">
+        <TweakSelect label="Titular" value={t.fontHeadline} onChange={v => setTweak('fontHeadline', v)}
+          options={['Newsreader','Source Serif 4','Inter','Manrope','IBM Plex Sans']} />
+        <TweakSelect label="Cuerpo" value={t.fontBody} onChange={v => setTweak('fontBody', v)}
+          options={['Inter','Manrope','IBM Plex Sans','Newsreader','Source Serif 4']} />
+        <TweakSlider label="Escala" value={t.fontScale} min={90} max={110} step={1}
+          onChange={v => setTweak('fontScale', v)} suffix="%" />
+      </TweakSection>
+      <TweakSection title="Secciones">
+        <TweakToggle label="Proyectos" value={t.showProjects} onChange={v => setTweak('showProjects', v)} />
+        <TweakToggle label="Certificaciones" value={t.showVolunteer} onChange={v => setTweak('showVolunteer', v)} />
+      </TweakSection>
+    </TweaksPanel>
+  );
+}
+ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<CvTweaks />);
+</script>
+
+</body>
+</html>

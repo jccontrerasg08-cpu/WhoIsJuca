@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Juan Carlos Contreras Gastélum — Global Business</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<template id="__bundler_thumbnail" data-bg-color="#fafafa">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#fafafa"/>
+    <text x="60" y="380" font-family="Archivo Black, Impact, sans-serif" font-size="320" font-weight="900" fill="#0a0a0a" letter-spacing="-12">JCC</text>
+    <rect x="60" y="430" width="900" height="14" fill="#0a0a0a"/>
+    <text x="60" y="510" font-family="JetBrains Mono, monospace" font-size="36" fill="#0a0a0a">GLOBAL BUSINESS · DATA + AI</text>
+    <text x="60" y="560" font-family="JetBrains Mono, monospace" font-size="28" fill="#2563eb">[ LOADING PORTFOLIO… ]</text>
+    <circle cx="1080" cy="120" r="40" fill="#2563eb"/>
+  </svg>
+</template>
+
+<style>
+  :root {
+    --bg: #fafafa;
+    --fg: #0a0a0a;
+    --muted: #6b6b6b;
+    --line: #0a0a0a;
+    --accent: #2563eb;
+    --accent-fg: #ffffff;
+    --card: #ffffff;
+    --hairline: rgba(10,10,10,0.12);
+    --density: 1;
+    --display-weight: 900;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0a0a0a;
+    --fg: #fafafa;
+    --muted: #8a8a8a;
+    --line: #fafafa;
+    --card: #141414;
+    --hairline: rgba(250,250,250,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--fg); }
+  body {
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .display {
+    font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+    font-weight: var(--display-weight);
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+    text-transform: uppercase;
+  }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ========== TOP BAR ========== */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 28px;
+    background: var(--bg);
+    border-bottom: 2px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .topbar .left { display: flex; gap: 24px; align-items: center; }
+  .topbar .marker {
+    display: inline-block; width: 8px; height: 8px;
+    background: var(--accent); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.9); }
+  }
+  .topbar .right { display: flex; gap: 4px; }
+  .topbar button {
+    font-family: inherit; font-size: 11px; text-transform: uppercase;
+    background: transparent; color: var(--fg);
+    border: 1.5px solid var(--line);
+    padding: 6px 12px; cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+  }
+  .topbar button.active { background: var(--fg); color: var(--bg); }
+  .topbar button:hover:not(.active) { background: var(--line); color: var(--bg); }
+
+  /* ========== HERO ========== */
+  .hero {
+    padding: calc(60px * var(--density)) 28px calc(40px * var(--density));
+    border-bottom: 2px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: calc(32px * var(--density));
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .hero-meta .label { color: var(--muted); display: block; margin-bottom: 4px; font-size: 10px; }
+  .hero-meta .value { color: var(--fg); font-weight: 700; }
+
+  .name-block { position: relative; }
+  .name-display {
+    font-size: clamp(72px, 16vw, 260px);
+  }
+  .name-line-2 {
+    -webkit-text-stroke: 2px var(--line);
+    color: transparent;
+  }
+
+  .hero-bottom {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 48px;
+    align-items: end;
+    margin-top: calc(40px * var(--density));
+  }
+  .tagline {
+    font-size: clamp(20px, 2.4vw, 32px);
+    font-weight: 500;
+    line-height: 1.25;
+    max-width: 900px;
+    text-wrap: pretty;
+  }
+  .tagline strong {
+    background: var(--accent);
+    color: var(--accent-fg);
+    padding: 2px 10px;
+    font-weight: 600;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+  .hero-cta {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid var(--line);
+    color: var(--fg);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    gap: 16px;
+  }
+  .btn:hover { background: var(--fg); color: var(--bg); transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--line); }
+  .btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+  .btn.primary:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .btn .arrow { font-size: 16px; }
+
+  /* ========== SECTION ========== */
+  section.s {
+    padding: calc(80px * var(--density)) 28px;
+    border-bottom: 2px solid var(--line);
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .s-wrap { max-width: 1600px; margin: 0 auto; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: end;
+    padding-bottom: 32px;
+    margin-bottom: calc(48px * var(--density));
+    border-bottom: 1px solid var(--hairline);
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .section-title {
+    font-size: clamp(48px, 8vw, 120px);
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+  /* Long words like "CERTIFICACIONES" need a smaller cap to avoid overflow */
+  #certs .section-title { font-size: clamp(40px, 6.5vw, 96px); }
+  .section-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* ========== ABOUT ========== */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about-text {
+    font-size: clamp(18px, 1.6vw, 22px);
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+  .about-text p + p { margin-top: 1em; }
+  .about-text mark {
+    background: var(--fg);
+    color: var(--bg);
+    padding: 0 6px;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 2px solid var(--line);
+  }
+  .stat {
+    padding: 32px 24px;
+    border-right: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .stat:nth-child(2n) { border-right: none; }
+  .stat:nth-last-child(-n+2) { border-bottom: none; }
+  .stat-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+  .stat-num .accent { color: var(--accent); }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  /* ========== PROJECTS ========== */
+  .filters {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 8px 14px;
+    border: 1.5px solid var(--line);
+    background: transparent;
+    color: var(--fg);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .chip.active { background: var(--fg); color: var(--bg); }
+  .chip:hover:not(.active) { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 2px solid var(--line);
+  }
+  .project {
+    display: grid;
+    grid-template-columns: 80px 2.5fr 2fr 1.5fr 60px;
+    gap: 32px;
+    padding: 32px 28px;
+    border-bottom: 1px solid var(--hairline);
+    cursor: pointer;
+    transition: all 0.2s;
+    align-items: start;
+    position: relative;
+  }
+  .project:last-child { border-bottom: none; }
+  .project:hover {
+    background: var(--fg); color: var(--bg);
+  }
+  .project:hover .p-stack-tag {
+    border-color: var(--bg); color: var(--bg);
+  }
+  .project:hover .p-arrow { transform: translateX(8px); }
+  .p-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    padding-top: 4px;
+  }
+  .p-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(24px, 2.4vw, 36px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+  .p-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 8px;
+  }
+  .project:hover .p-meta { color: var(--bg); opacity: 0.7; }
+  .p-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    padding-top: 6px;
+  }
+  .p-stack {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    padding-top: 6px;
+  }
+  .p-stack-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    padding: 3px 7px;
+    border: 1px solid var(--line);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .p-arrow {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 32px;
+    text-align: right;
+    transition: transform 0.2s;
+    line-height: 1;
+  }
+
+  /* ========== EXPERIENCE TIMELINE ========== */
+  .timeline {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 2px solid var(--line);
+    border-bottom: 2px solid var(--line);
+  }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 180px 1fr 240px;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: start;
+  }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding-top: 6px;
+  }
+  .tl-date .now { color: var(--accent); font-weight: 700; }
+  .tl-main { display: grid; gap: 8px; }
+  .tl-role {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  .tl-org {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .tl-desc {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--muted);
+    margin-top: 4px;
+    max-width: 600px;
+  }
+  .tl-tags {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    justify-content: flex-end;
+    padding-top: 4px;
+  }
+
+  /* ========== SKILLS ========== */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 2px solid var(--line);
+  }
+  .skill-cat {
+    padding: 32px 24px;
+    border-right: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .skill-cat:nth-child(4n) { border-right: none; }
+  .skill-cat:nth-last-child(-n+4) { border-bottom: none; }
+  .skill-cat-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .skill-list { display: flex; flex-direction: column; gap: 8px; }
+  .skill {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: default;
+    transition: all 0.15s;
+  }
+  .skill:hover { color: var(--accent); transform: translateX(4px); }
+  .skill .dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent);
+  }
+
+  /* ========== EDUCATION ========== */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .edu-card {
+    border: 2px solid var(--line);
+    padding: 32px;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .edu-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0 var(--line);
+  }
+  .edu-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 4px 8px;
+    background: var(--fg);
+    color: var(--bg);
+    display: inline-block;
+    margin-bottom: 24px;
+  }
+  .edu-school {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(24px, 2.4vw, 32px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .edu-degree {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  .edu-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-top: 16px;
+    border-top: 1px solid var(--hairline);
+    display: flex; justify-content: space-between;
+  }
+
+  /* ========== CERT / LANGS ========== */
+  .two-col {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+  }
+  .cert-list { display: flex; flex-direction: column; }
+  .cert {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--hairline);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .cert-name {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .cert-issuer {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
+  }
+  .cert-year {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 24px;
+    color: var(--accent);
+  }
+
+  .lang-block {
+    border: 2px solid var(--line);
+    padding: 24px;
+  }
+  .lang-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .lang-row:last-child { border-bottom: none; }
+  .lang-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  .lang-bar {
+    height: 4px;
+    background: var(--hairline);
+    position: relative;
+  }
+  .lang-bar .fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: var(--accent);
+  }
+  .lang-level {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  /* ========== CONTACT ========== */
+  .contact-block {
+    background: var(--fg);
+    color: var(--bg);
+    padding: calc(80px * var(--density)) 28px;
+    border-bottom: 2px solid var(--line);
+  }
+  .contact-wrap { max-width: 1600px; margin: 0 auto; }
+  .contact-display {
+    font-size: clamp(60px, 12vw, 200px);
+    line-height: 0.9;
+    margin-bottom: 48px;
+  }
+  .contact-display .accent { color: var(--accent); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+  [data-theme="dark"] .contact-block .contact-grid { border-top-color: rgba(0,0,0,0.2); }
+  .contact-item .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    margin-bottom: 8px;
+  }
+  .contact-item a {
+    color: inherit;
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: color 0.15s;
+  }
+  .contact-item a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ========== FOOTER ========== */
+  footer {
+    padding: 24px 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ========== HEADSHOT PLACEHOLDER ========== */
+  .headshot {
+    width: 96px; height: 96px;
+    border: 2px solid var(--line);
+    background: repeating-linear-gradient(
+      45deg,
+      var(--bg),
+      var(--bg) 6px,
+      var(--hairline) 6px,
+      var(--hairline) 7px
+    );
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1100px) {
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .skill-cat:nth-child(2n) { border-right: none; }
+    .skill-cat:nth-child(odd) { border-right: 1px solid var(--hairline); }
+    .skill-cat:nth-last-child(-n+2) { border-bottom: none; }
+    .contact-grid { grid-template-columns: repeat(2, 1fr); }
+    .project { grid-template-columns: 60px 1fr 40px; gap: 16px; }
+    .p-stack, .p-desc { grid-column: 2 / 3; }
+    .hero-bottom { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .two-col { grid-template-columns: 1fr; gap: 32px; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .tl-item { grid-template-columns: 1fr; gap: 12px; }
+    .tl-tags { justify-content: flex-start; }
+    .hero-meta { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* hide [data-lang] elements that don't match */
+  [data-lang]:not(.show) { display: none; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="left">
+    <span><span class="marker"></span> &nbsp;Available for projects</span>
+    <span style="opacity:0.5;">/</span>
+    <span data-lang="es" class="show">JCC · Portfolio · 2026</span>
+    <span data-lang="en">JCC · Portfolio · 2026</span>
+  </div>
+  <div class="right">
+    <button id="lang-es" class="active" onclick="setLang('es')">ES</button>
+    <button id="lang-en" onclick="setLang('en')">EN</button>
+    <button id="theme-toggle" onclick="toggleTheme()" style="margin-left:12px;">◐ DARK</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-meta">
+      <div><span class="label">Name</span><span class="value">Juan Carlos Contreras</span></div>
+      <div><span class="label">Role</span>
+        <span class="value" data-lang="es">Global Business · Data</span>
+        <span class="value" data-lang="en">Global Business · Data</span>
+      </div>
+      <div><span class="label">Location</span><span class="value">Monterrey, NL · MX 🇲🇽</span></div>
+      <div><span class="label">Status</span>
+        <span class="value" data-lang="es" style="color:var(--accent);">● Disponible</span>
+        <span class="value" data-lang="en" style="color:var(--accent);">● Available</span>
+      </div>
+    </div>
+
+    <div class="name-block">
+      <h1 class="display name-display">JUAN<br/><span class="name-line-2">CARLOS G.</span></h1>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="tagline">
+        <span data-lang="es">
+          Estudio <strong>Global Business</strong> en el Tec de Monterrey con intercambio en VU Amsterdam. Construyo software, automatizo procesos y aplico análisis de datos a problemas reales de negocio.
+        </span>
+        <span data-lang="en">
+          I study <strong>Global Business</strong> at Tec de Monterrey with an exchange at VU Amsterdam. I build software, automate processes, and apply data analysis to real business problems.
+        </span>
+      </div>
+      <div class="hero-cta">
+        <a href="#projects" class="btn primary">
+          <span data-lang="es">Ver proyectos</span>
+          <span data-lang="en">See projects</span>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#contact" class="btn">
+          <span data-lang="es">Contactar</span>
+          <span data-lang="en">Get in touch</span>
+          <span class="arrow">↓</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="s" id="about">
+  <div class="section-head">
+    <div class="section-num">[01]</div>
+    <h2 class="display section-title" data-lang="es">SOBRE MÍ</h2>
+    <h2 class="display section-title" data-lang="en">ABOUT</h2>
+    <div class="section-meta">
+      <div data-lang="es">Quién soy<br/>Qué hago</div>
+      <div data-lang="en">Who I am<br/>What I do</div>
+    </div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <div data-lang="es">
+        <p>Estudio la <mark>Licenciatura en Global Business</mark> en el Tec de Monterrey (ago 2022 – jun 2026) dentro del <strong>Programa de Talento Académico</strong>, con promedio acumulado de <mark>91.76 / 100</mark> e intercambio cultural en <strong>Vrije Universiteit Amsterdam</strong>.</p>
+        <p>Mi especialidad es la concentración <mark>TI04 — Data Analytics & AI Tools</mark>: usar tecnologías digitales para resolver problemas complejos de negocio mediante analítica de datos y agentes de IA. <strong>Inglés avanzado C1</strong> (TOEFL IBT 2024, Cambridge C1 2021).</p>
+        <p>Construyo software de producción: backend en FastAPI, automatización con Playwright, integración con APIs (WhatsApp, Telegram, SAT) y deploys en Docker / Railway.</p>
+      </div>
+      <div data-lang="en">
+        <p>I'm pursuing a <mark>BSc in Global Business</mark> at Tec de Monterrey (Aug 2022 – Jun 2026) within the <strong>Academic Talent Program</strong>, with a cumulative GPA of <mark>91.76 / 100</mark> and a cultural exchange at <strong>Vrije Universiteit Amsterdam</strong>.</p>
+        <p>My specialization is the <mark>TI04 — Data Analytics & AI Tools</mark> concentration: using digital technologies to solve complex business problems via data analytics and AI agents. <strong>Advanced English C1</strong> (TOEFL IBT 2024, Cambridge C1 2021).</p>
+        <p>I build production software: FastAPI backends, browser automation with Playwright, third-party API integrations (WhatsApp, Telegram, SAT México), and Docker / Railway deployments.</p>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num"><span class="accent">3+</span></div>
+        <div class="stat-label" data-lang="es">Proyectos reales</div>
+        <div class="stat-label" data-lang="en">Real projects</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">15<span class="accent">+</span></div>
+        <div class="stat-label" data-lang="es">Tecnologías</div>
+        <div class="stat-label" data-lang="en">Technologies</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label" data-lang="es">Idiomas</div>
+        <div class="stat-label" data-lang="en">Languages</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">93<span class="accent">.87</span></div>
+        <div class="stat-label" data-lang="es">GPA acumulado</div>
+        <div class="stat-label" data-lang="en">Cumulative GPA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="s" id="projects">
+  <div class="section-head">
+    <div class="section-num">[02]</div>
+    <h2 class="display section-title" data-lang="es">PROYECTOS</h2>
+    <h2 class="display section-title" data-lang="en">PROJECTS</h2>
+    <div class="section-meta">
+      <div data-lang="es">Selección 2024–2026<br/>Click para detalles</div>
+      <div data-lang="en">Selected 2024–2026<br/>Click to expand</div>
+    </div>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="chip active" data-filter="all">All</button>
+    <button class="chip" data-filter="data">Data / ML</button>
+    <button class="chip" data-filter="backend">Backend</button>
+    <button class="chip" data-filter="web">Web</button>
+    <button class="chip" data-filter="fintech">Fintech</button>
+  </div>
+
+  <div class="projects" id="projects-list">
+    <!-- AUTO CREDITO 2 -->
+    <a class="project" data-tags="backend fintech" href="https://github.com/jccontrerasg08-cpu/auto-credito-2" target="_blank" rel="noopener">
+      <div class="p-num">01</div>
+      <div>
+        <div class="p-title">AUTO CRÉDITO 2 / BOT RFA</div>
+        <div class="p-meta">2025 · Programa de Ahorro RFA · Tijuana / Ensenada</div>
+      </div>
+      <div class="p-desc">
+        <span data-lang="es">Sistema integral de crédito automatizado: bots de WhatsApp + Telegram, scraping del portal CFE/ASI, facturación CFDI 4.0 con SAT, panel admin y descarga masiva de comprobantes.</span>
+        <span data-lang="en">End-to-end automated credit system: WhatsApp + Telegram bots, CFE/ASI portal scraping, CFDI 4.0 invoicing with SAT México, admin panel, and bulk receipt download.</span>
+      </div>
+      <div class="p-stack">
+        <span class="p-stack-tag">FastAPI</span>
+        <span class="p-stack-tag">Playwright</span>
+        <span class="p-stack-tag">Anthropic</span>
+        <span class="p-stack-tag">SAT CFDI</span>
+        <span class="p-stack-tag">Docker</span>
+        <span class="p-stack-tag">Railway</span>
+      </div>
+      <div class="p-arrow">→</div>
+    </a>
+
+    <!-- PAGINA WEB RFA -->
+    <a class="project" data-tags="web fintech" href="https://programadeahorro.com.mx/" target="_blank" rel="noopener">
+      <div class="p-num">02</div>
+      <div>
+        <div class="p-title">PROGRAMA DE AHORRO RFA</div>
+        <div class="p-meta">2025 · programadeahorro.com.mx · Web</div>
+      </div>
+      <div class="p-desc">
+        <span data-lang="es">Sitio web público que conecta con el catálogo del backend (Auto Crédito 2): productos, precios, planes de pago y registro de solicitudes para electrodomésticos sin enganche.</span>
+        <span data-lang="en">Public website wired to the Auto Crédito backend catalog: products, prices, financing plans, and an application form for no-down-payment appliances.</span>
+      </div>
+      <div class="p-stack">
+        <span class="p-stack-tag">HTML / CSS</span>
+        <span class="p-stack-tag">JS</span>
+        <span class="p-stack-tag">REST API</span>
+        <span class="p-stack-tag">Google Merchant</span>
+      </div>
+      <div class="p-arrow">→</div>
+    </a>
+
+    <!-- XIMPLE / STRATIFY -->
+    <a class="project" data-tags="data fintech" href="https://github.com/Juca8/DashboardEdit/tree/main" target="_blank" rel="noopener">
+      <div class="p-num">03</div>
+      <div>
+        <div class="p-title">STRATIFY · XIMPLE.CO — ALLY SEGMENTATION & INTENSIVE-USE PREDICTION</div>
+        <div class="p-meta">FEB — JUN 2025 · Líder del equipo · Reto Tec21 · 2º lugar · Presentación a directivos de Ximple</div>
+      </div>
+      <div class="p-desc">
+        <span data-lang="es">Lideré el equipo de 5 personas en el reto <strong>TI04 — Data Analytics & AI Tools</strong> con Ximple.co. Construimos <strong>Stratify</strong>, un dashboard en Streamlit que segmenta aliadas comerciales con KMeans + PCA y predice "uso intensivo" del crédito con Random Forest + SMOTE (comparado contra LogReg, SVC, MLP y DecisionTree con validación cruzada estratificada). Visualizaciones interactivas en Bokeh y pipeline CRISP-DM end-to-end. <strong>2º lugar</strong> y presentación a directivos.</span>
+        <span data-lang="en">Led a 5-person team in the <strong>TI04 — Data Analytics & AI Tools</strong> challenge with Ximple.co. We built <strong>Stratify</strong>, a Streamlit dashboard that segments commercial allies with KMeans + PCA and predicts intensive credit use with Random Forest + SMOTE (benchmarked against LogReg, SVC, MLP and DecisionTree under stratified cross-validation). Interactive Bokeh visualizations, full CRISP-DM pipeline. <strong>2nd place</strong> and presented to Ximple leadership.</span>
+      </div>
+      <div class="p-stack">
+        <span class="p-stack-tag">Python</span>
+        <span class="p-stack-tag">scikit-learn</span>
+        <span class="p-stack-tag">Streamlit</span>
+        <span class="p-stack-tag">Bokeh</span>
+        <span class="p-stack-tag">SMOTE</span>
+        <span class="p-stack-tag">KMeans</span>
+        <span class="p-stack-tag">CRISP-DM</span>
+      </div>
+      <div class="p-arrow">→</div>
+    </a>
+
+    <!-- ACADEMIC -->
+    <a class="project" data-tags="data" href="https://github.com/Juca8/DashboardEdit/tree/main" target="_blank" rel="noopener">
+      <div class="p-num">04</div>
+      <div>
+        <div class="p-title">DASHBOARDS BI ACADÉMICOS</div>
+        <div class="p-meta">2024 — 2025 · Tec de Monterrey · Coursework</div>
+      </div>
+      <div class="p-desc">
+        <span data-lang="es">Múltiples dashboards interactivos con Power BI, Tableau y Streamlit para casos de negocio: análisis de ventas, segmentación de clientes y KPIs operativos.</span>
+        <span data-lang="en">Multiple interactive dashboards built in Power BI, Tableau and Streamlit for business cases: sales analysis, customer segmentation, and operational KPIs.</span>
+      </div>
+      <div class="p-stack">
+        <span class="p-stack-tag">Power BI</span>
+        <span class="p-stack-tag">Tableau</span>
+        <span class="p-stack-tag">Streamlit</span>
+        <span class="p-stack-tag">SQL</span>
+        <span class="p-stack-tag">DAX</span>
+      </div>
+      <div class="p-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="s" id="experience">
+  <div class="section-head">
+    <div class="section-num">[03]</div>
+    <h2 class="display section-title" data-lang="es">EXPERIENCIA</h2>
+    <h2 class="display section-title" data-lang="en">EXPERIENCE</h2>
+    <div class="section-meta">
+      <div data-lang="es">Trayectoria<br/>Roles · Empresas</div>
+      <div data-lang="en">Trajectory<br/>Roles · Orgs</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date"><span class="now">2025 — NOW</span></div>
+      <div class="tl-main">
+        <div class="tl-role" data-lang="es">DESARROLLADOR · BOT RFA</div>
+        <div class="tl-role" data-lang="en">DEVELOPER · BOT RFA</div>
+        <div class="tl-org">Programa de Ahorro RFA · Tijuana / Ensenada</div>
+        <div class="tl-desc" data-lang="es">Desarrollo end-to-end del Bot RFA y la página web pública. Integración con WhatsApp Business API, Telegram, portal CFE/ASI y facturación electrónica SAT.</div>
+        <div class="tl-desc" data-lang="en">End-to-end development of Bot RFA and the public website. Integrations with WhatsApp Business API, Telegram, CFE/ASI portal, and SAT electronic invoicing.</div>
+      </div>
+      <div class="tl-tags">
+        <span class="p-stack-tag">FastAPI</span>
+        <span class="p-stack-tag">Playwright</span>
+        <span class="p-stack-tag">CFDI</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">ENE 2025 — JUN 2025</div>
+      <div class="tl-main">
+        <div class="tl-role" data-lang="es">DIRECTOR DE PATROCINIOS</div>
+        <div class="tl-role" data-lang="en">SPONSORSHIP DIRECTOR</div>
+        <div class="tl-org">Comité de Participación Estudiantil · Tec de Monterrey</div>
+        <div class="tl-desc" data-lang="es">Director de patrocinios del área de finanzas. Gestioné patrocinios para eventos benéficos, actividades y participaciones estudiantiles.</div>
+        <div class="tl-desc" data-lang="en">Sponsorship Director, finance area. Managed sponsorships for charity events, student activities and engagement initiatives.</div>
+      </div>
+      <div class="tl-tags">
+        <span class="p-stack-tag">Finanzas</span>
+        <span class="p-stack-tag">Gestión</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">SEP 2024 — JUN 2025</div>
+      <div class="tl-main">
+        <div class="tl-role" data-lang="es">MIEMBRO · TEC CONSULTING GROUP</div>
+        <div class="tl-role" data-lang="en">MEMBER · TEC CONSULTING GROUP</div>
+        <div class="tl-org">Tec Consulting Club · Tec de Monterrey</div>
+        <div class="tl-desc" data-lang="es">Miembro activo del club de consultoría. Proyectos académicos aplicados (Ximple.co — predicción de pagos fintech con metodología CRISP-DM).</div>
+        <div class="tl-desc" data-lang="en">Active member of the consulting club. Applied academic projects (Ximple.co — fintech payment prediction with CRISP-DM methodology).</div>
+      </div>
+      <div class="tl-tags">
+        <span class="p-stack-tag">Consultoría</span>
+        <span class="p-stack-tag">CRISP-DM</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">SEP 2019 — ENE 2020</div>
+      <div class="tl-main">
+        <div class="tl-role" data-lang="es">CAPTURISTA CONTABLE</div>
+        <div class="tl-role" data-lang="en">ACCOUNTING DATA ENTRY</div>
+        <div class="tl-org">RFA Energía Sustentable</div>
+        <div class="tl-desc" data-lang="es">Captura de diarios contables y generación de facturas, nóminas y recibos de pago utilizando CONTPAQi, SuperCONTABILIDAD y SuperNÓMINA.</div>
+        <div class="tl-desc" data-lang="en">Accounting entry: ledger journals, invoices, payroll and payment receipts using CONTPAQi, SuperCONTABILIDAD and SuperNÓMINA.</div>
+      </div>
+      <div class="tl-tags">
+        <span class="p-stack-tag">Finanzas</span>
+        <span class="p-stack-tag">Excel</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">ENE 2019 — AGO 2019</div>
+      <div class="tl-main">
+        <div class="tl-role" data-lang="es">REPARTIDOR Y VENDEDOR</div>
+        <div class="tl-role" data-lang="en">DELIVERY & SALES</div>
+        <div class="tl-org">REFRIAHORRO SA DE CV</div>
+        <div class="tl-desc" data-lang="es">Recepción y atención al cliente, distribución de productos. Aumenté las ventas un 10% durante el periodo.</div>
+        <div class="tl-desc" data-lang="en">Customer service and product distribution. Drove a 10% sales increase during the period.</div>
+      </div>
+      <div class="tl-tags">
+        <span class="p-stack-tag">Ventas</span>
+        <span class="p-stack-tag">Logística</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="s" id="skills">
+  <div class="section-head">
+    <div class="section-num">[04]</div>
+    <h2 class="display section-title" data-lang="es">SKILLS</h2>
+    <h2 class="display section-title" data-lang="en">SKILLS</h2>
+    <div class="section-meta">
+      <div data-lang="es">Stack técnico<br/>Herramientas</div>
+      <div data-lang="en">Tech stack<br/>Tooling</div>
+    </div>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-cat">
+      <div class="skill-cat-name">Top Skills</div>
+      <div class="skill-list">
+        <div class="skill"><span class="dot"></span>Análisis de datos</div>
+        <div class="skill"><span class="dot"></span>Gestión</div>
+        <div class="skill"><span class="dot"></span>Aduanas</div>
+        <div class="skill"><span class="dot"></span>Hablar en público</div>
+        <div class="skill"><span class="dot"></span>Negociación</div>
+        <div class="skill"><span class="dot"></span>Business English</div>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-name">Data / Tools</div>
+      <div class="skill-list">
+        <div class="skill"><span class="dot"></span>Python</div>
+        <div class="skill"><span class="dot"></span>SQL</div>
+        <div class="skill"><span class="dot"></span>Microsoft Excel</div>
+        <div class="skill"><span class="dot"></span>Pandas</div>
+        <div class="skill"><span class="dot"></span>CONTPAQi</div>
+        <div class="skill"><span class="dot"></span>SuperCONTABILIDAD</div>
+        <div class="skill"><span class="dot"></span>SuperNÓMINA</div>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-name">Backend / Web</div>
+      <div class="skill-list">
+        <div class="skill"><span class="dot"></span>FastAPI</div>
+        <div class="skill"><span class="dot"></span>Playwright</div>
+        <div class="skill"><span class="dot"></span>REST APIs</div>
+        <div class="skill"><span class="dot"></span>Docker</div>
+        <div class="skill"><span class="dot"></span>Railway</div>
+        <div class="skill"><span class="dot"></span>SQLite</div>
+      </div>
+    </div>
+    <div class="skill-cat">
+      <div class="skill-cat-name">Domain</div>
+      <div class="skill-list">
+        <div class="skill"><span class="dot"></span>Energías renovables</div>
+        <div class="skill"><span class="dot"></span>Sustainability / SDG</div>
+        <div class="skill"><span class="dot"></span>CFDI 4.0 / SAT</div>
+        <div class="skill"><span class="dot"></span>WhatsApp / Telegram API</div>
+        <div class="skill"><span class="dot"></span>Estrategia de negocios</div>
+        <div class="skill"><span class="dot"></span>Comercio internacional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="s" id="education">
+  <div class="section-head">
+    <div class="section-num">[05]</div>
+    <h2 class="display section-title" data-lang="es">EDUCACIÓN</h2>
+    <h2 class="display section-title" data-lang="en">EDUCATION</h2>
+    <div class="section-meta">
+      <div data-lang="es">Formación académica</div>
+      <div data-lang="en">Academic background</div>
+    </div>
+  </div>
+
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-tag" data-lang="es">PRINCIPAL · GPA 91.76</div>
+      <div class="edu-tag" data-lang="en">PRIMARY · GPA 91.76</div>
+      <div class="edu-school">Tec de Monterrey</div>
+      <div class="edu-degree" data-lang="es">Bachelor in Global Business · Programa de Talento Académico · Campus Monterrey</div>
+      <div class="edu-degree" data-lang="en">Bachelor in Global Business · Academic Talent Program · Campus Monterrey</div>
+      <div class="edu-meta">
+        <span>AGO 2022 — JUN 2026</span>
+        <span data-lang="es">Concentración: TI04 Data Analytics & AI Tools</span>
+        <span data-lang="en">Concentration: TI04 Data Analytics & AI Tools</span>
+        <span>Int'l Trade · Global Logistics · Strategy</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-tag" data-lang="es">INTERCAMBIO</div>
+      <div class="edu-tag" data-lang="en">EXCHANGE</div>
+      <div class="edu-school">VU Amsterdam</div>
+      <div class="edu-degree" data-lang="es">Vrije Universiteit Amsterdam — Cultural Exchange Programme · Business, Management, Marketing</div>
+      <div class="edu-degree" data-lang="en">Vrije Universiteit Amsterdam — Cultural Exchange Programme · Business, Management, Marketing</div>
+      <div class="edu-meta">
+        <span>AGO 2025 — ENE 2026</span>
+        <span>Managing Negotiations · AI for Business</span>
+        <span>Academic Skills · Global Sustainability</span>
+        <span>24 ECTS · GPA 7.0/10</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-tag" data-lang="es">PREPARATORIA</div>
+      <div class="edu-tag" data-lang="en">HIGH SCHOOL</div>
+      <div class="edu-school">CETYS Ensenada</div>
+      <div class="edu-degree" data-lang="es">CETYS Preparatoria · Diploma de Excelencia Académica 2020 · 2021 · 2022</div>
+      <div class="edu-degree" data-lang="en">CETYS Preparatoria · Excellence Student Diploma 2020 · 2021 · 2022</div>
+      <div class="edu-meta">
+        <span>2019 — 2022</span>
+        <span data-lang="es">Tesorero · VP Interact</span>
+        <span data-lang="en">Treasurer · VP Interact</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS + LANGS -->
+<section class="s" id="certs">
+  <div class="section-head">
+    <div class="section-num">[06]</div>
+    <h2 class="display section-title" data-lang="es">CERTIFICACIONES</h2>
+    <h2 class="display section-title" data-lang="en">CERTIFICATIONS</h2>
+    <div class="section-meta">
+      <div data-lang="es">Cursos · Idiomas</div>
+      <div data-lang="en">Courses · Languages</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="cert-list">
+      <div class="cert">
+        <div>
+          <div class="cert-name">TOEFL IBT</div>
+          <div class="cert-issuer" data-lang="es">ETS · Business English · English</div>
+          <div class="cert-issuer" data-lang="en">ETS · Business English · English</div>
+        </div>
+        <div class="cert-year">'24</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name">Sustainability Development Goals Course</div>
+          <div class="cert-issuer" data-lang="es">Be The Change: Goals Unify Initiative · VU Amsterdam</div>
+          <div class="cert-issuer" data-lang="en">Be The Change: Goals Unify Initiative · VU Amsterdam</div>
+        </div>
+        <div class="cert-year">'25</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name" data-lang="es">Sensibilización en Dignidad Humana</div>
+          <div class="cert-name" data-lang="en">Human Dignity Awareness</div>
+          <div class="cert-issuer">Tecnológico de Monterrey</div>
+        </div>
+        <div class="cert-year">—</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name">Certificado Servicio Social</div>
+          <div class="cert-issuer">Tecnológico de Monterrey</div>
+        </div>
+        <div class="cert-year">'26</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name" data-lang="es">Taller de Importación y Exportación</div>
+          <div class="cert-name" data-lang="en">Import and Export Workshop</div>
+          <div class="cert-issuer">Comercio internacional · Aduanas</div>
+        </div>
+        <div class="cert-year">'25</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name">Cambridge English C1</div>
+          <div class="cert-issuer">Cambridge Assessment</div>
+        </div>
+        <div class="cert-year">'21</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name">Oxford B2</div>
+          <div class="cert-issuer">Oxford English</div>
+        </div>
+        <div class="cert-year">'19</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name">BEO Global Talent</div>
+          <div class="cert-issuer" data-lang="es">BEO World · Alumno Globalmente Talentoso · Oxford Bootcamp 2019</div>
+          <div class="cert-issuer" data-lang="en">BEO World · Globally Talented Student · Oxford Bootcamp 2019</div>
+        </div>
+        <div class="cert-year">'19</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name" data-lang="es">Beca Talento Académico</div>
+          <div class="cert-name" data-lang="en">Academic Talent Scholarship</div>
+          <div class="cert-issuer">Tecnológico de Monterrey · 2022 — Present</div>
+        </div>
+        <div class="cert-year">'22</div>
+      </div>
+    </div>
+
+    <div class="lang-block">
+      <div class="skill-cat-name" style="margin-bottom:16px;">
+        <span data-lang="es">Idiomas</span>
+        <span data-lang="en">Languages</span>
+      </div>
+      <div class="lang-row">
+        <div class="lang-name">ES</div>
+        <div class="lang-bar"><div class="fill" style="width:100%"></div></div>
+        <div class="lang-level" data-lang="es">Nativo</div>
+        <div class="lang-level" data-lang="en">Native</div>
+      </div>
+      <div class="lang-row">
+        <div class="lang-name">EN</div>
+        <div class="lang-bar"><div class="fill" style="width:100%"></div></div>
+        <div class="lang-level" data-lang="es">Bilingüe nativo · C1 TOEFL · Cambridge</div>
+        <div class="lang-level" data-lang="en">Native bilingual · C1 TOEFL · Cambridge</div>
+      </div>
+      <div class="lang-row">
+        <div class="lang-name">FR</div>
+        <div class="lang-bar"><div class="fill" style="width:30%"></div></div>
+        <div class="lang-level" data-lang="es">Básico</div>
+        <div class="lang-level" data-lang="en">Basic</div>
+      </div>
+      <div class="lang-row">
+        <div class="lang-name">NL</div>
+        <div class="lang-bar"><div class="fill" style="width:30%"></div></div>
+        <div class="lang-level" data-lang="es">Básico</div>
+        <div class="lang-level" data-lang="en">Basic</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-block" id="contact">
+  <div class="contact-wrap">
+    <h2 class="display contact-display">
+      <span data-lang="es">HABLEMOS<span class="accent">.</span></span>
+      <span data-lang="en">LET'S TALK<span class="accent">.</span></span>
+    </h2>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="label">Email</div>
+        <a href="mailto:jccontrerasg08@gmail.com">jccontrerasg08@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <div class="label">Phone</div>
+        <a href="tel:+526462267777">(646) 226-7777</a>
+      </div>
+      <div class="contact-item">
+        <div class="label">GitHub</div>
+        <a href="https://github.com/jccontrerasg08-cpu" target="_blank" rel="noopener">jccontrerasg08-cpu ↗</a>
+      </div>
+      <div class="contact-item">
+        <div class="label">LinkedIn</div>
+        <a href="https://www.linkedin.com/in/juan-carlos-c-a19132211/" target="_blank" rel="noopener">juan-carlos-c ↗</a>
+      </div>
+      <div class="contact-item">
+        <div class="label">Location</div>
+        <a href="#" onclick="return false;">Monterrey, NL · MX 🇲🇽</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Juan Carlos Contreras</span>
+  <span data-lang="es">Hecho con HTML, CSS, JS · Sin frameworks</span>
+  <span data-lang="en">Built with HTML, CSS, JS · No frameworks</span>
+  <span class="mono">v1.0</span>
+</footer>
+
+<!-- React + Babel for tweaks -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script>
+  /* ----- Language toggle ----- */
+  function setLang(lang) {
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.toggle('show', el.dataset.lang === lang);
+    });
+    document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  }
+  // initialize ES visible
+  document.querySelectorAll('[data-lang="es"]').forEach(el => el.classList.add('show'));
+
+  /* ----- Theme ----- */
+  function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    document.getElementById('theme-toggle').textContent = next === 'dark' ? '◑ LIGHT' : '◐ DARK';
+  }
+
+  /* ----- Project filters ----- */
+  document.querySelectorAll('#filters .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#filters .chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const f = chip.dataset.filter;
+      document.querySelectorAll('#projects-list .project').forEach(p => {
+        const tags = p.dataset.tags || '';
+        p.style.display = (f === 'all' || tags.includes(f)) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<!-- Tweaks defaults -->
+<script>
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#95eac4",
+    "displayWeight": 700,
+    "density": 0.7,
+    "darkMode": true,
+    "showAbout": true,
+    "showProjects": true,
+    "showExperience": true,
+    "showSkills": true,
+    "showEducation": true,
+    "showCerts": true
+  }/*EDITMODE-END*/;
+</script>
+
+<script type="text/babel">
+  const { useEffect } = React;
+
+  function applyTweaks(t) {
+    document.documentElement.style.setProperty('--accent', t.accent);
+    document.documentElement.style.setProperty('--display-weight', t.displayWeight);
+    document.documentElement.style.setProperty('--density', t.density);
+    document.documentElement.setAttribute('data-theme', t.darkMode ? 'dark' : 'light');
+    document.getElementById('theme-toggle').textContent = t.darkMode ? '◑ LIGHT' : '◐ DARK';
+    document.getElementById('about').style.display = t.showAbout ? '' : 'none';
+    document.getElementById('projects').style.display = t.showProjects ? '' : 'none';
+    document.getElementById('experience').style.display = t.showExperience ? '' : 'none';
+    document.getElementById('skills').style.display = t.showSkills ? '' : 'none';
+    document.getElementById('education').style.display = t.showEducation ? '' : 'none';
+    document.getElementById('certs').style.display = t.showCerts ? '' : 'none';
+  }
+
+  function TweaksApp() {
+    const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+    useEffect(() => {
+      applyTweaks(tweaks);
+    }, [tweaks]);
+
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Look & Feel">
+          <TweakColor label="Accent color" value={tweaks.accent} onChange={v => setTweak('accent', v)} />
+          <TweakRadio
+            label="Display weight"
+            value={tweaks.displayWeight}
+            onChange={v => setTweak('displayWeight', v)}
+            options={[
+              { label: 'Heavy', value: 700 },
+              { label: 'Massive', value: 900 }
+            ]}
+          />
+          <TweakSlider label="Density" min={0.7} max={1.4} step={0.05} value={tweaks.density} onChange={v => setTweak('density', v)} />
+          <TweakToggle label="Dark mode" checked={tweaks.darkMode} onChange={v => setTweak('darkMode', v)} />
+        </TweakSection>
+
+        <TweakSection title="Sections">
+          <TweakToggle label="About" checked={tweaks.showAbout} onChange={v => setTweak('showAbout', v)} />
+          <TweakToggle label="Projects" checked={tweaks.showProjects} onChange={v => setTweak('showProjects', v)} />
+          <TweakToggle label="Experience" checked={tweaks.showExperience} onChange={v => setTweak('showExperience', v)} />
+          <TweakToggle label="Skills" checked={tweaks.showSkills} onChange={v => setTweak('showSkills', v)} />
+          <TweakToggle label="Education" checked={tweaks.showEducation} onChange={v => setTweak('showEducation', v)} />
+          <TweakToggle label="Certifications" checked={tweaks.showCerts} onChange={v => setTweak('showCerts', v)} />
+        </TweakSection>
+      </TweaksPanel>
+    );
+  }
+
+  // Apply defaults immediately so first paint matches
+  applyTweaks(TWEAK_DEFAULTS);
+
+  const root = document.createElement('div');
+  document.body.appendChild(root);
+  ReactDOM.createRoot(root).render(<TweaksApp />);
+</script>
+
+</body>
+</html>
