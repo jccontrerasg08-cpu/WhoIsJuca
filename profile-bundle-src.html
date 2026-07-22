@@ -127,6 +127,69 @@
   .name-display {
     font-size: clamp(72px, 16vw, 260px);
   }
+  .portrait {
+    width: 100%;
+    max-width: 240px;
+    aspect-ratio: 595 / 887;
+    object-fit: cover;
+    object-position: center top;
+    border: 2px solid var(--line);
+    display: block;
+    filter: grayscale(1) contrast(1.04);
+    transition: filter 0.45s ease, transform 0.2s, box-shadow 0.2s;
+  }
+  .portrait:hover {
+    filter: grayscale(0) contrast(1.02);
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 var(--accent);
+  }
+
+  /* ===== SHARED PHOTO TREATMENT ===== */
+  .ph {
+    display: block;
+    width: 100%;
+    border: 2px solid var(--line);
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.04);
+    transition: filter 0.45s ease;
+  }
+  .ph:hover { filter: grayscale(0) contrast(1.02); }
+  .photo-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+  .about-photo { display: flex; flex-direction: column; }
+  .about-photo .ph { aspect-ratio: 4 / 5; object-position: center 28%; }
+
+  .exchange-band { margin-bottom: calc(48px * var(--density)); }
+  .exchange-band .ph { aspect-ratio: 3 / 1; object-position: center bottom; filter: grayscale(1) contrast(1.02) brightness(1.25); }
+  .exchange-band .ph:hover { filter: grayscale(0) contrast(1.02) brightness(1.12); }
+  .band-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .band-cap .accent { color: var(--accent); }
+
+  .tl-divider {
+    padding: 24px 0 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--hairline);
+  }
   .name-line-2 {
     -webkit-text-stroke: 2px var(--line);
     color: transparent;
@@ -134,7 +197,7 @@
 
   .hero-bottom {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: auto 2fr 1fr;
     gap: 48px;
     align-items: end;
     margin-top: calc(40px * var(--density));
@@ -224,8 +287,8 @@
   /* ========== ABOUT ========== */
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    grid-template-columns: 300px 1.4fr 1fr;
+    gap: 48px;
     align-items: start;
   }
   .about-text {
@@ -286,14 +349,20 @@
     transition: all 0.15s;
   }
   .chip.active { background: var(--fg); color: var(--bg); }
-  .chip:hover:not(.active) { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+  .chip:hover:not(.active) { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
 
+  .to-top{position:fixed;bottom:24px;right:24px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--accent);color:#0a0a0a;border:2px solid var(--line);font-family:'Archivo Black',sans-serif;font-size:20px;cursor:pointer;z-index:200;opacity:0;pointer-events:none;transition:opacity .25s,transform .15s;}
+  .to-top.show{opacity:1;pointer-events:auto;}
+  .to-top:hover{transform:translateY(-3px);}
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); }
   .projects {
     display: grid;
     grid-template-columns: 1fr;
     border: 2px solid var(--line);
   }
   .project {
+    color: inherit; text-decoration: none;
     display: grid;
     grid-template-columns: 80px 2.5fr 2fr 1.5fr 60px;
     gap: 32px;
@@ -651,7 +720,10 @@
     .project { grid-template-columns: 60px 1fr 40px; gap: 16px; }
     .p-stack, .p-desc { grid-column: 2 / 3; }
     .hero-bottom { grid-template-columns: 1fr; }
+    .portrait { max-width: 180px; }
     .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-photo { max-width: 320px; }
+    .exchange-band .ph { aspect-ratio: 5 / 3; object-position: center bottom; }
     .two-col { grid-template-columns: 1fr; gap: 32px; }
     .edu-grid { grid-template-columns: 1fr; }
     .tl-item { grid-template-columns: 1fr; gap: 12px; }
@@ -701,6 +773,7 @@
     </div>
 
     <div class="hero-bottom">
+      <img class="portrait" src="assets/photo-amsterdam.png" alt="Juan Carlos Contreras — Amsterdam, 2026" loading="lazy" />
       <div class="tagline">
         <span data-lang="es">
           Estudio <strong>Global Business</strong> en el Tec de Monterrey con intercambio en VU Amsterdam. Construyo software, automatizo procesos y aplico análisis de datos a problemas reales de negocio.
@@ -720,6 +793,14 @@
           <span data-lang="en">Get in touch</span>
           <span class="arrow">↓</span>
         </a>
+        <a href="cv-es.html" class="btn" data-lang="es">
+          <span>Ver CV</span>
+          <span class="arrow">↗</span>
+        </a>
+        <a href="cv-en.html" class="btn" data-lang="en">
+          <span>View résumé</span>
+          <span class="arrow">↗</span>
+        </a>
       </div>
     </div>
   </div>
@@ -738,6 +819,10 @@
   </div>
 
   <div class="about-grid">
+    <figure class="about-photo">
+      <img class="ph" src="assets/photo-selfie.png" alt="Juan Carlos Contreras" loading="lazy" />
+      <figcaption class="photo-cap">JCC · '25</figcaption>
+    </figure>
     <div class="about-text">
       <div data-lang="es">
         <p>Estudio la <mark>Licenciatura en Global Business</mark> en el Tec de Monterrey (ago 2022 – jun 2026) dentro del <strong>Programa de Talento Académico</strong>, con promedio acumulado de <mark>91.76 / 100</mark> e intercambio cultural en <strong>Vrije Universiteit Amsterdam</strong>.</p>
@@ -797,7 +882,7 @@
 
   <div class="projects" id="projects-list">
     <!-- AUTO CREDITO 2 -->
-    <a class="project" data-tags="backend fintech" href="https://github.com/jccontrerasg08-cpu/auto-credito-2" target="_blank" rel="noopener">
+    <a class="project" data-tags="backend fintech" href="https://github.com/jccontrerasg08-cpu/auto-credito-2" target="_blank" rel="noopener noreferrer">
       <div class="p-num">01</div>
       <div>
         <div class="p-title">AUTO CRÉDITO 2 / BOT RFA</div>
@@ -819,7 +904,7 @@
     </a>
 
     <!-- PAGINA WEB RFA -->
-    <a class="project" data-tags="web fintech" href="https://programadeahorro.com.mx/" target="_blank" rel="noopener">
+    <a class="project" data-tags="web fintech" href="https://programadeahorro.com.mx/" target="_blank" rel="noopener noreferrer">
       <div class="p-num">02</div>
       <div>
         <div class="p-title">PROGRAMA DE AHORRO RFA</div>
@@ -839,7 +924,7 @@
     </a>
 
     <!-- XIMPLE / STRATIFY -->
-    <a class="project" data-tags="data fintech" href="https://github.com/Juca8/DashboardEdit/tree/main" target="_blank" rel="noopener">
+    <a class="project" data-tags="data fintech" href="https://github.com/Juca8/DashboardEdit/tree/main" target="_blank" rel="noopener noreferrer">
       <div class="p-num">03</div>
       <div>
         <div class="p-title">STRATIFY · XIMPLE.CO — ALLY SEGMENTATION & INTENSIVE-USE PREDICTION</div>
@@ -862,7 +947,7 @@
     </a>
 
     <!-- ACADEMIC -->
-    <a class="project" data-tags="data" href="https://github.com/Juca8/DashboardEdit/tree/main" target="_blank" rel="noopener">
+    <a class="project" data-tags="data" href="https://github.com/Juca8/DashboardEdit/tree/main" target="_blank" rel="noopener noreferrer">
       <div class="p-num">04</div>
       <div>
         <div class="p-title">DASHBOARDS BI ACADÉMICOS</div>
@@ -881,6 +966,46 @@
       </div>
       <div class="p-arrow">→</div>
     </a>
+
+    <!-- GEOMATICA / SIG -->
+    <div class="project" data-tags="data">
+      <div class="p-num">05</div>
+      <div>
+        <div class="p-title">MODELACIÓN CON GEOMÁTICA · SIG</div>
+        <div class="p-meta">2023 · Tec de Monterrey · Coursework</div>
+      </div>
+      <div class="p-desc">
+        <span data-lang="es">Representación cartográfica y análisis espacial con Sistemas de Información Geográfica: construcción de bases de datos geográficas, capas temáticas y procesamiento de datos territoriales para la toma de decisiones.</span>
+        <span data-lang="en">Cartographic representation and spatial analysis with Geographic Information Systems: geographic database construction, thematic layers, and territorial data processing for decision-making.</span>
+      </div>
+      <div class="p-stack">
+        <span class="p-stack-tag">GIS / SIG</span>
+        <span class="p-stack-tag">Spatial DB</span>
+        <span class="p-stack-tag">Geodata</span>
+        <span class="p-stack-tag">Cartography</span>
+      </div>
+      <div class="p-arrow">◇</div>
+    </div>
+
+    <!-- ANALISIS INFERENCIAL -->
+    <div class="project" data-tags="data">
+      <div class="p-num">06</div>
+      <div>
+        <div class="p-title">PENSAMIENTO ESTADÍSTICO · ANÁLISIS INFERENCIAL</div>
+        <div class="p-meta">2024 · Tec de Monterrey · Coursework</div>
+      </div>
+      <div class="p-desc">
+        <span data-lang="es">Análisis inferencial sobre datos reales: pruebas de hipótesis, intervalos de confianza y regresión para respaldar conclusiones de negocio con evidencia estadística.</span>
+        <span data-lang="en">Inferential analysis on real data: hypothesis testing, confidence intervals, and regression to back business conclusions with statistical evidence.</span>
+      </div>
+      <div class="p-stack">
+        <span class="p-stack-tag">Statistics</span>
+        <span class="p-stack-tag">Hypothesis Testing</span>
+        <span class="p-stack-tag">Regression</span>
+        <span class="p-stack-tag">Python</span>
+      </div>
+      <div class="p-arrow">◇</div>
+    </div>
   </div>
 </section>
 
@@ -891,8 +1016,8 @@
     <h2 class="display section-title" data-lang="es">EXPERIENCIA</h2>
     <h2 class="display section-title" data-lang="en">EXPERIENCE</h2>
     <div class="section-meta">
-      <div data-lang="es">Trayectoria<br/>Roles · Empresas</div>
-      <div data-lang="en">Trajectory<br/>Roles · Orgs</div>
+      <div data-lang="es">Trayectoria<br/>Roles · Voluntariado</div>
+      <div data-lang="en">Trajectory<br/>Roles · Volunteering</div>
     </div>
   </div>
 
@@ -972,6 +1097,45 @@
         <span class="p-stack-tag">Logística</span>
       </div>
     </div>
+
+    <div class="tl-divider">
+      <span data-lang="es">— Voluntariado & Comunidad</span>
+      <span data-lang="en">— Volunteering & Community</span>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">AGO 2023 — JUN 2025</div>
+      <div class="tl-main">
+        <div class="tl-role" data-lang="es">VOLUNTARIO · CALISKIDS</div>
+        <div class="tl-role" data-lang="en">VOLUNTEER · CALISKIDS</div>
+        <div class="tl-org">CalisKids · Servicio Social</div>
+        <div class="tl-desc" data-lang="es">Fomento del deporte en niños y jóvenes mediante dinámicas de calistenia, circuitos y juegos.</div>
+        <div class="tl-desc" data-lang="en">Promoting sport among children and youth through calisthenics circuits, drills and games.</div>
+      </div>
+      <div class="tl-tags">
+        <span class="p-stack-tag" data-lang="es">Voluntariado</span>
+        <span class="p-stack-tag" data-lang="en">Volunteer</span>
+        <span class="p-stack-tag" data-lang="es">Infancia</span>
+        <span class="p-stack-tag" data-lang="en">Youth</span>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">AGO 2020 — MAY 2022</div>
+      <div class="tl-main">
+        <div class="tl-role" data-lang="es">VOLUNTARIO · ROTARY / INTERACT</div>
+        <div class="tl-role" data-lang="en">VOLUNTEER · ROTARY / INTERACT</div>
+        <div class="tl-org">Rotary International · Club Interact Ensenada Todos Santos (CETYS)</div>
+        <div class="tl-desc" data-lang="es">Miembro y posteriormente tesorero del Club Interact. Proyectos de medio ambiente y servicio comunitario con los clubes Interact Califia y Ensenada.</div>
+        <div class="tl-desc" data-lang="en">Member and later treasurer of the Interact Club. Environmental and community-service projects with the Interact Califia and Ensenada clubs.</div>
+      </div>
+      <div class="tl-tags">
+        <span class="p-stack-tag" data-lang="es">Voluntariado</span>
+        <span class="p-stack-tag" data-lang="en">Volunteer</span>
+        <span class="p-stack-tag" data-lang="es">Tesorero</span>
+        <span class="p-stack-tag" data-lang="en">Treasurer</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1048,6 +1212,16 @@
     </div>
   </div>
 
+  <figure class="exchange-band">
+    <img class="ph" src="assets/photo-rome.png" alt="Pantheon — Roma, Italia" />
+    <figcaption class="band-cap">
+      <span data-lang="es">Pantheon · Roma, IT</span>
+      <span data-lang="en">Pantheon · Rome, IT</span>
+      <span class="accent" data-lang="es">Intercambio en Europa · '25–'26</span>
+      <span class="accent" data-lang="en">Exchange across Europe · '25–'26</span>
+    </figcaption>
+  </figure>
+
   <div class="edu-grid">
     <div class="edu-card">
       <div class="edu-tag" data-lang="es">PRINCIPAL · GPA 91.76</div>
@@ -1059,6 +1233,8 @@
         <span>AGO 2022 — JUN 2026</span>
         <span data-lang="es">Concentración: TI04 Data Analytics & AI Tools</span>
         <span data-lang="en">Concentration: TI04 Data Analytics & AI Tools</span>
+        <span data-lang="es">Peer Mentor · Analista de Datos · Comité Estudiantil</span>
+        <span data-lang="en">Peer Mentor · Data Analyst · Student Committee</span>
         <span>Int'l Trade · Global Logistics · Strategy</span>
       </div>
     </div>
@@ -1104,6 +1280,72 @@
 
   <div class="two-col">
     <div class="cert-list">
+      <div class="cert">
+        <div>
+          <div class="cert-name" data-lang="es">Forward Program</div>
+          <div class="cert-name" data-lang="en">Forward Program</div>
+          <div class="cert-issuer">McKinsey.org</div>
+        </div>
+        <div class="cert-year">'26</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name">Google Data Analytics</div>
+          <div class="cert-issuer" data-lang="es">Google · SQL · Análisis técnico de datos</div>
+          <div class="cert-issuer" data-lang="en">Google · SQL · Technical Data Analysis</div>
+        </div>
+        <div class="cert-year">'26</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name">SAP Business Analyst</div>
+          <div class="cert-issuer" data-lang="es">SAP · Productos SAP · Analítica de datos</div>
+          <div class="cert-issuer" data-lang="en">SAP · SAP Products · Data Analytics</div>
+        </div>
+        <div class="cert-year">'26</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name">Google AI</div>
+          <div class="cert-issuer" data-lang="es">Google · Inteligencia artificial</div>
+          <div class="cert-issuer" data-lang="en">Google · Artificial Intelligence</div>
+        </div>
+        <div class="cert-year">'26</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name">Learn SQL Basics for Data Science</div>
+          <div class="cert-issuer" data-lang="es">University of California, Davis · SQL · Análisis de datos</div>
+          <div class="cert-issuer" data-lang="en">University of California, Davis · SQL · Data Analysis</div>
+        </div>
+        <div class="cert-year">'26</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name" data-lang="es">Comercio internacional: Incoterms</div>
+          <div class="cert-name" data-lang="en">International Trade: Incoterms</div>
+          <div class="cert-issuer" data-lang="es">LinkedIn · Aduanas · Negocios internacionales</div>
+          <div class="cert-issuer" data-lang="en">LinkedIn · Customs · International Business</div>
+        </div>
+        <div class="cert-year">'26</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name" data-lang="es">Comercio internacional en aduanas de la UE</div>
+          <div class="cert-name" data-lang="en">International Trade in EU Customs</div>
+          <div class="cert-issuer" data-lang="es">LinkedIn · Aduanas · Unión Europea</div>
+          <div class="cert-issuer" data-lang="en">LinkedIn · Customs · European Union</div>
+        </div>
+        <div class="cert-year">'26</div>
+      </div>
+      <div class="cert">
+        <div>
+          <div class="cert-name" data-lang="es">Mentoría entre Pares</div>
+          <div class="cert-name" data-lang="en">Peer Mentorship</div>
+          <div class="cert-issuer">Tecnológico de Monterrey · Volunteering</div>
+        </div>
+        <div class="cert-year">'24</div>
+      </div>
       <div class="cert">
         <div>
           <div class="cert-name">TOEFL IBT</div>
@@ -1189,8 +1431,8 @@
       <div class="lang-row">
         <div class="lang-name">EN</div>
         <div class="lang-bar"><div class="fill" style="width:100%"></div></div>
-        <div class="lang-level" data-lang="es">Bilingüe nativo · C1 TOEFL · Cambridge</div>
-        <div class="lang-level" data-lang="en">Native bilingual · C1 TOEFL · Cambridge</div>
+        <div class="lang-level" data-lang="es">Nativo</div>
+        <div class="lang-level" data-lang="en">Native</div>
       </div>
       <div class="lang-row">
         <div class="lang-name">FR</div>
@@ -1226,19 +1468,32 @@
       </div>
       <div class="contact-item">
         <div class="label">GitHub</div>
-        <a href="https://github.com/jccontrerasg08-cpu" target="_blank" rel="noopener">jccontrerasg08-cpu ↗</a>
+        <a href="https://github.com/jccontrerasg08-cpu" target="_blank" rel="noopener noreferrer">jccontrerasg08-cpu ↗</a>
       </div>
       <div class="contact-item">
         <div class="label">LinkedIn</div>
-        <a href="https://www.linkedin.com/in/juan-carlos-c-a19132211/" target="_blank" rel="noopener">juan-carlos-c ↗</a>
+        <a href="https://www.linkedin.com/in/juan-carlos-c-a19132211/" target="_blank" rel="noopener noreferrer">juan-carlos-c ↗</a>
+      </div>
+      <div class="contact-item">
+        <div class="label" data-lang="es">Carta de Presentación</div>
+        <div class="label" data-lang="en">Cover Letter</div>
+        <a href="carta-presentacion.html" target="_blank" rel="noopener noreferrer">
+          <span data-lang="es">Ver carta ↗</span>
+          <span data-lang="en">View letter ↗</span>
+        </a>
       </div>
       <div class="contact-item">
         <div class="label">Location</div>
-        <a href="#" onclick="return false;">Monterrey, NL · MX 🇲🇽</a>
+        <a href="#" onclick="return false;">MONTERREY, NL · 🇲🇽</a>
       </div>
     </div>
   </div>
 </section>
+
+<button class="to-top" id="to-top" aria-label="Subir al inicio" title="Subir al inicio" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+  (function(){var b=document.getElementById('to-top');window.addEventListener('scroll',function(){b.classList.toggle('show',window.scrollY>400);});})();
+</script>
 
 <footer>
   <span>© 2026 Juan Carlos Contreras</span>
@@ -1247,11 +1502,6 @@
   <span class="mono">v1.0</span>
 </footer>
 
-<!-- React + Babel for tweaks -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script type="text/babel" src="tweaks-panel.jsx"></script>
 
 <script>
   /* ----- Language toggle ----- */
@@ -1304,15 +1554,13 @@
   }/*EDITMODE-END*/;
 </script>
 
-<script type="text/babel">
-  const { useEffect } = React;
-
+<script>
   function applyTweaks(t) {
     document.documentElement.style.setProperty('--accent', t.accent);
     document.documentElement.style.setProperty('--display-weight', t.displayWeight);
     document.documentElement.style.setProperty('--density', t.density);
     document.documentElement.setAttribute('data-theme', t.darkMode ? 'dark' : 'light');
-    document.getElementById('theme-toggle').textContent = t.darkMode ? '◑ LIGHT' : '◐ DARK';
+    var tt = document.getElementById('theme-toggle'); if (tt) tt.textContent = t.darkMode ? '◑ LIGHT' : '◐ DARK';
     document.getElementById('about').style.display = t.showAbout ? '' : 'none';
     document.getElementById('projects').style.display = t.showProjects ? '' : 'none';
     document.getElementById('experience').style.display = t.showExperience ? '' : 'none';
@@ -1320,49 +1568,7 @@
     document.getElementById('education').style.display = t.showEducation ? '' : 'none';
     document.getElementById('certs').style.display = t.showCerts ? '' : 'none';
   }
-
-  function TweaksApp() {
-    const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
-    useEffect(() => {
-      applyTweaks(tweaks);
-    }, [tweaks]);
-
-    return (
-      <TweaksPanel title="Tweaks">
-        <TweakSection title="Look & Feel">
-          <TweakColor label="Accent color" value={tweaks.accent} onChange={v => setTweak('accent', v)} />
-          <TweakRadio
-            label="Display weight"
-            value={tweaks.displayWeight}
-            onChange={v => setTweak('displayWeight', v)}
-            options={[
-              { label: 'Heavy', value: 700 },
-              { label: 'Massive', value: 900 }
-            ]}
-          />
-          <TweakSlider label="Density" min={0.7} max={1.4} step={0.05} value={tweaks.density} onChange={v => setTweak('density', v)} />
-          <TweakToggle label="Dark mode" checked={tweaks.darkMode} onChange={v => setTweak('darkMode', v)} />
-        </TweakSection>
-
-        <TweakSection title="Sections">
-          <TweakToggle label="About" checked={tweaks.showAbout} onChange={v => setTweak('showAbout', v)} />
-          <TweakToggle label="Projects" checked={tweaks.showProjects} onChange={v => setTweak('showProjects', v)} />
-          <TweakToggle label="Experience" checked={tweaks.showExperience} onChange={v => setTweak('showExperience', v)} />
-          <TweakToggle label="Skills" checked={tweaks.showSkills} onChange={v => setTweak('showSkills', v)} />
-          <TweakToggle label="Education" checked={tweaks.showEducation} onChange={v => setTweak('showEducation', v)} />
-          <TweakToggle label="Certifications" checked={tweaks.showCerts} onChange={v => setTweak('showCerts', v)} />
-        </TweakSection>
-      </TweaksPanel>
-    );
-  }
-
-  // Apply defaults immediately so first paint matches
   applyTweaks(TWEAK_DEFAULTS);
-
-  const root = document.createElement('div');
-  document.body.appendChild(root);
-  ReactDOM.createRoot(root).render(<TweaksApp />);
 </script>
 
 </body>

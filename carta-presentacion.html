@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Juan Carlos Contreras Gastélum — Carta de Presentación</title>
+<meta name="author" content="Juan Carlos Contreras Gastélum" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  doc-page:not(:defined){visibility:hidden}
+  @media print { .toolbar,.type-bar { display: none !important; } }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  :root { --ink:#0f172a; --muted:#475569; --soft:#94a3b8; --line:#cbd5e1; --accent:#1e3a8a; }
+  html, body { background:#e2e8f0; }
+  body { font-family:'Inter',system-ui,sans-serif; color:var(--ink); line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .toolbar { position:fixed; top:16px; right:16px; display:flex; gap:8px; background:#fff; padding:8px; border-radius:999px; box-shadow:0 4px 16px rgba(0,0,0,.12); z-index:100; }
+  .type-bar { position:fixed; top:16px; left:16px; display:flex; gap:6px; background:#fff; padding:8px; border-radius:999px; box-shadow:0 4px 16px rgba(0,0,0,.12); z-index:100; }
+  .toolbar a, .toolbar button, .type-bar button { font-family:'Inter',sans-serif; font-size:12px; font-weight:600; color:var(--ink); background:#f1f5f9; border:none; padding:8px 14px; border-radius:999px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:6px; }
+  .toolbar a:hover, .toolbar button:hover, .type-bar button:hover { background:var(--accent); color:#fff; }
+  .type-bar button.active { background:var(--accent); color:#fff; }
+  .page { background:#fff; padding:0.9in 0.85in; font-size:11pt; display:flex; flex-direction:column; }
+  .lh-head { border-bottom:2px solid var(--ink); padding-bottom:16px; margin-bottom:28px; display:flex; justify-content:space-between; align-items:flex-end; gap:20px; }
+  .lh-name { font-family:'Inter',sans-serif; font-size:19pt; font-weight:700; line-height:1.05; letter-spacing:-.01em; }
+  .lh-role { font-size:10.5pt; color:var(--muted); margin-top:4px; }
+  .lh-contact { text-align:right; font-size:9.5pt; color:var(--muted); line-height:1.5; }
+  .lh-contact a { color:var(--ink); text-decoration:none; }
+  a { color:var(--accent); }
+  a:hover { color:var(--ink); }
+  .meta { font-size:10pt; color:var(--soft); margin-bottom:22px; }
+  .salutation { margin-bottom:16px; font-weight:600; }
+  .letter p { margin-bottom:14px; text-wrap:pretty; }
+  .letter strong { color:var(--accent); font-weight:600; }
+  .sign { margin-top:26px; }
+  .sign .name { font-family:'Inter',sans-serif; font-size:12pt; font-weight:700; margin-top:6px; }
+  .sign .line { font-size:10pt; color:var(--muted); }
+  .letter { display:none; }
+  .letter.show { display:block; }
+  .hint { font-size:9.5pt; color:var(--muted); font-style:normal; }
+</style>
+</head>
+<body>
+
+<div class="type-bar">
+  <button data-type="puesto" class="active" onclick="setType('puesto')">Puesto</button>
+  <button data-type="vacante" onclick="setType('vacante')">Vacante</button>
+  <button data-type="networking" onclick="setType('networking')">Networking</button>
+</div>
+<div class="toolbar">
+  <a href="profile.html">← Sitio</a>
+  <button onclick="toggleLang()" id="lang-btn">EN</button>
+  <button onclick="window.print()">↓ PDF</button>
+</div>
+
+<doc-page size="letter">
+<section class="page">
+
+  <header class="lh-head">
+    <div>
+      <div class="lh-name">Juan Carlos Contreras Gastélum</div>
+      <div class="lh-role">
+        <span data-lang="es" class="show">Licenciatura en Negocios Globales · Análisis de Datos y Herramientas de IA</span>
+        <span data-lang="en">Bachelor in Global Business · Data Analytics &amp; AI Tools</span>
+      </div>
+    </div>
+    <div class="lh-contact">
+      <div><a href="mailto:jccontrerasg08@gmail.com">jccontrerasg08@gmail.com</a></div>
+      <div>(646) 226-7777</div>
+      <div>Monterrey, NL · México</div>
+    </div>
+  </header>
+
+  <div class="meta">
+    <span data-lang="es" class="show">Monterrey, N.L. · 2026</span>
+    <span data-lang="en">Monterrey, Mexico · 2026</span>
+  </div>
+
+  <!-- ============ PUESTO ============ -->
+  <div class="letter show" data-type="puesto" data-lang="es">
+    <p class="salutation">Estimada/o <span class="hint">[nombre del contacto de la empresa]</span>:</p>
+    <p>He tenido la oportunidad de conocerlos a través de su página de internet. Su estabilidad laboral, enfoque al cliente y mejora continua son valores muy importantes para mí y por tal motivo me gustaría formar parte de ustedes.</p>
+    <p>Soy estudiante de <strong>Negocios Globales</strong> por el Tecnológico de Monterrey y me apasiona convertir los datos en decisiones que generen valor real. Con Python, SQL, FastAPI y automatización he construido software de producción y proyectos de analítica en sectores como fintech y consultoría, siempre con la convicción de que la tecnología vale la pena cuando resuelve problemas concretos de las personas y los negocios.</p>
+    <p>Muchas gracias por su atención, adjunto mi CV. Me comunico con usted el <span class="hint">[fecha]</span> para verificar la recepción de mis datos.</p>
+    <div class="sign"><span>Atentamente,</span><div class="name">Juan Carlos Contreras Gastélum</div><div class="line">(646) 226-7777</div></div>
+  </div>
+  <div class="letter" data-type="puesto" data-lang="en">
+    <p class="salutation">Dear <span class="hint">[company contact name]</span>,</p>
+    <p>I have had the opportunity to learn about you through your website. Your job stability, customer focus and continuous improvement are values that are very important to me, and for that reason I would like to be part of your team.</p>
+    <p>I am a <strong>Global Business</strong> student at Tecnológico de Monterrey, and I am genuinely driven by turning data into decisions that create real value. Using Python, SQL, FastAPI and automation I have built production software and analytics projects in sectors such as fintech and consulting, always convinced that technology is worth it when it solves concrete problems for people and businesses.</p>
+    <p>Thank you for your attention; my CV is attached. I will contact you on <span class="hint">[date]</span> to confirm you received my information.</p>
+    <div class="sign"><span>Sincerely,</span><div class="name">Juan Carlos Contreras Gastélum</div><div class="line">(646) 226-7777</div></div>
+  </div>
+
+  <!-- ============ VACANTE ============ -->
+  <div class="letter" data-type="vacante" data-lang="es">
+    <p class="salutation">Estimada/o <span class="hint">[nombre del contacto de la empresa]</span>:</p>
+    <p>He tenido la oportunidad de conocer la vacante de <span class="hint">[nombre de la vacante]</span> a través de <span class="hint">[página de internet o medio donde ubiqué la vacante]</span> y estoy muy interesado en participar en su proceso de Reclutamiento y Selección.</p>
+    <p>Soy estudiante de <strong>Negocios Globales</strong> apasionado por el análisis de datos y la inteligencia artificial. Manejo Python, SQL y automatización, y disfruto especialmente liderar equipos: en <strong>Stratify</strong> guié al mío con metodología CRISP-DM hasta un dashboard que ganó el 2º lugar y que presentamos con orgullo a los directivos de Ximple.co.</p>
+    <p>Muchas gracias por su atención, adjunto mi CV. Me comunico con usted el <span class="hint">[fecha, día posterior al envío]</span> para agendar una entrevista laboral.</p>
+    <div class="sign"><span>Atentamente,</span><div class="name">Juan Carlos Contreras Gastélum</div><div class="line">(646) 226-7777</div></div>
+  </div>
+  <div class="letter" data-type="vacante" data-lang="en">
+    <p class="salutation">Dear <span class="hint">[company contact name]</span>,</p>
+    <p>I have had the opportunity to learn about the <span class="hint">[job title]</span> opening through <span class="hint">[website or source where I found the vacancy]</span> and I am very interested in taking part in your recruitment and selection process.</p>
+    <p>I am a <strong>Global Business</strong> student who is truly passionate about data analytics and artificial intelligence. I work with Python, SQL and automation, and I especially enjoy leading teams: on <strong>Stratify</strong> I guided mine through the CRISP-DM methodology to a dashboard that won 2nd place and that we proudly presented to Ximple.co leadership.</p>
+    <p>Thank you for your attention; my CV is attached. I will contact you on <span class="hint">[date, the day after sending]</span> to schedule an interview.</p>
+    <div class="sign"><span>Sincerely,</span><div class="name">Juan Carlos Contreras Gastélum</div><div class="line">(646) 226-7777</div></div>
+  </div>
+
+  <!-- ============ NETWORKING ============ -->
+  <div class="letter" data-type="networking" data-lang="es">
+    <p class="salutation">Hola <span class="hint">[nombre de tu contacto]</span>:</p>
+    <p>Espero te encuentres bien. Como lo platicamos hace unos días, me tomé la libertad de escribir esta nota para que me ayudes a enviar mi CV a algunos de tus contactos y conseguir una oportunidad laboral. Nuevamente, muchas gracias por tu ayuda.</p>
+    <p>Soy estudiante de <strong>Negocios Globales</strong> y me encanta usar el análisis de datos, la IA y herramientas como Python y SQL para resolver problemas reales; lo he vivido de cerca en proyectos de analítica y automatización que de verdad me emocionan.</p>
+    <div class="sign"><span>Un saludo,</span><div class="name">Juan Carlos Contreras Gastélum</div><div class="line">(646) 226-7777</div></div>
+  </div>
+  <div class="letter" data-type="networking" data-lang="en">
+    <p class="salutation">Hi <span class="hint">[your contact name]</span>,</p>
+    <p>I hope you are doing well. As we discussed a few days ago, I took the liberty of writing this note so you can help me send my CV to some of your contacts and find a job opportunity. Again, thank you very much for your help.</p>
+    <p>I am a <strong>Global Business</strong> student, and I love using data analytics, AI and tools like Python and SQL to solve real problems; I have lived it firsthand in analytics and automation projects that genuinely excite me.</p>
+    <div class="sign"><span>Best regards,</span><div class="name">Juan Carlos Contreras Gastélum</div><div class="line">(646) 226-7777</div></div>
+  </div>
+
+</section>
+</doc-page>
+<script src="doc-page.js"></script>
+<script>
+  var LANG = 'es', TYPE = 'puesto';
+  function apply(){
+    document.documentElement.lang = LANG;
+    document.querySelectorAll('.lh-role [data-lang], .meta [data-lang]').forEach(function(el){ el.classList.toggle('show', el.dataset.lang === LANG); });
+    document.querySelectorAll('.letter').forEach(function(el){ el.classList.toggle('show', el.dataset.type === TYPE && el.dataset.lang === LANG); });
+    document.getElementById('lang-btn').textContent = LANG === 'es' ? 'EN' : 'ES';
+    document.querySelectorAll('.type-bar button').forEach(function(b){ b.classList.toggle('active', b.dataset.type === TYPE); });
+  }
+  function toggleLang(){ LANG = LANG === 'es' ? 'en' : 'es'; apply(); }
+  function setType(t){ TYPE = t; apply(); }
+  apply();
+</script>
+</body>
+</html>
