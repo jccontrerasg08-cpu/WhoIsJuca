@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Juan Carlos Contreras Gastélum — Carta de Presentación</title>
+<meta name="author" content="Juan Carlos Contreras Gastélum" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  doc-page:not(:defined){visibility:hidden}
+  @media print { .toolbar,.type-bar { display: none !important; } }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  :root { --ink:#0f172a; --muted:#475569; --soft:#94a3b8; --line:#cbd5e1; --accent:#1e3a8a; }
+  html, body { background:#e2e8f0; }
+  body { font-family:'Inter',system-ui,sans-serif; color:var(--ink); line-height:1.5; -webkit-font-smoothing:antialiased; }
+  .toolbar { position:fixed; top:16px; right:16px; display:flex; gap:8px; background:#fff; padding:8px; border-radius:999px; box-shadow:0 4px 16px rgba(0,0,0,.12); z-index:100; }
+  .type-bar { position:fixed; top:16px; left:16px; display:flex; gap:6px; background:#fff; padding:8px; border-radius:999px; box-shadow:0 4px 16px rgba(0,0,0,.12); z-index:100; }
+  .toolbar a, .toolbar button, .type-bar button { font-family:'Inter',sans-serif; font-size:12px; font-weight:600; color:var(--ink); background:#f1f5f9; border:none; padding:8px 14px; border-radius:999px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:6px; }
+  .toolbar a:hover, .toolbar button:hover, .type-bar button:hover { background:var(--accent); color:#fff; }
+  .type-bar button.active { background:var(--accent); color:#fff; }
+  .page { background:#fff; padding:1in 0.95in; font-size:11pt; line-height:1.55; display:flex; flex-direction:column; }
+  .lh-head { text-align:center; border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:26px; }
+  .lh-name { font-family:'Inter',sans-serif; font-size:15pt; font-weight:700; letter-spacing:.01em; }
+  .lh-contact { font-size:9.5pt; color:var(--muted); margin-top:5px; }
+  .lh-contact a { color:var(--muted); text-decoration:none; }
+  .lh-sep { margin:0 7px; color:var(--soft); }
+  a { color:var(--accent); }
+  a:hover { color:var(--ink); }
+  .date { font-size:10.5pt; margin-bottom:34px; }
+  .recipient { font-size:10.5pt; line-height:1.55; margin-bottom:30px; }
+  .salutation { margin-bottom:20px; font-weight:600; }
+  .letter p { margin-bottom:16px; line-height:1.6; text-wrap:pretty; }
+  .letter strong { color:var(--accent); font-weight:600; }
+  .sign { margin-top:40px; }
+  .sign .name { font-family:'Inter',sans-serif; font-size:11.5pt; font-weight:700; margin-top:6px; }
+  .sign .line { font-size:10pt; color:var(--muted); }
+  .letter { display:none; }
+  .letter.show { display:block; }
+  .hint { color:var(--soft); font-style:normal; border-bottom:1px dashed var(--soft); padding:0 3px; border-radius:2px; cursor:text; transition:background .15s,border-color .15s; }
+  .hint:hover { background:rgba(0,0,0,0.03); }
+  .hint:focus { outline:none; color:var(--ink); background:rgba(11,122,91,0.08); border-bottom-color:var(--accent); }
+  @media print { .hint { border-bottom:none; background:none; color:var(--ink); } }
+</style>
+</head>
+<body>
+
+<div class="type-bar">
+  <button data-type="puesto" class="active" onclick="setType('puesto')">Puesto</button>
+  <button data-type="vacante" onclick="setType('vacante')">Vacante</button>
+  <button data-type="networking" onclick="setType('networking')">Networking</button>
+</div>
+<div class="toolbar">
+  <a href="profile.html">← Sitio</a>
+  <button onclick="toggleLang()" id="lang-btn">EN</button>
+  <button onclick="window.print()">↓ PDF</button>
+</div>
+
+<doc-page size="letter">
+<section class="page">
+
+  <!-- ============ PUESTO ============ -->
+  <div class="letter show" data-type="puesto" data-lang="es">
+    <p class="date"><span class="hint">[Fecha]</span></p>
+    <div class="recipient"><span class="hint">[Nombre del contacto]</span><br/><span class="hint">[Empresa]</span><br/><span class="hint">[Dirección]</span><br/><span class="hint">[Ciudad, Estado]</span></div>
+    <p class="salutation">Estimada/o <span class="hint">[nombre del contacto]</span>:</p>
+    <p>Mi nombre es Juan Carlos Contreras Gastélum y soy egresado de <strong>Negocios Globales</strong> por el Tecnológico de Monterrey. Conocí a <span class="hint">[Empresa]</span> a través de su página de internet y su estabilidad laboral, enfoque al cliente y mejora continua conectan con lo que busco; por eso le escribo para expresar mi interés en formar parte de su equipo.</p>
+    <p>Me apasiona convertir los datos en decisiones que generen valor real. Con Python, SQL, FastAPI y automatización he construido software de producción y proyectos de analítica en sectores como fintech y consultoría, siempre con la convicción de que la tecnología vale la pena cuando resuelve problemas concretos de las personas y los negocios.</p>
+    <p>Adjunto mi CV para una revisión más detallada. No dude en comunicarse conmigo por teléfono al (646) 226-7777 o por correo a jccontrerasg08@gmail.com. Quedo al pendiente del acuse de recibo de mis datos y a sus órdenes para cualquier información adicional.</p>
+    <p>Gracias por su consideración.</p>
+    <div class="sign"><span>Saludos,</span><div class="name">Juan Carlos Contreras Gastélum</div></div>
+  </div>
+  <div class="letter" data-type="puesto" data-lang="en">
+    <p class="date"><span class="hint">[Date]</span></p>
+    <div class="recipient"><span class="hint">[Contact name]</span><br/><span class="hint">[Company]</span><br/><span class="hint">[Address]</span><br/><span class="hint">[City, State]</span></div>
+    <p class="salutation">Dear <span class="hint">[contact name]</span>,</p>
+    <p>My name is Juan Carlos Contreras Gastélum and I am a <strong>Global Business</strong> graduate from Tecnológico de Monterrey. I came across <span class="hint">[Company]</span> through your website, and your job stability, customer focus and continuous improvement align with what I am looking for; that is why I am writing to express my interest in joining your team.</p>
+    <p>I am genuinely driven by turning data into decisions that create real value. Using Python, SQL, FastAPI and automation I have built production software and analytics projects in sectors such as fintech and consulting, always convinced that technology is worth it when it solves concrete problems for people and businesses.</p>
+    <p>I have attached my CV for a more detailed review. Please do not hesitate to reach me by phone at (646) 226-7777 or by email at jccontrerasg08@gmail.com. I remain available and look forward to confirming receipt of my information.</p>
+    <p>Thank you for your consideration.</p>
+    <div class="sign"><span>Best regards,</span><div class="name">Juan Carlos Contreras Gastélum</div></div>
+  </div>
+
+  <!-- ============ VACANTE ============ -->
+  <div class="letter" data-type="vacante" data-lang="es">
+    <p class="date"><span class="hint">[Fecha]</span></p>
+    <div class="recipient"><span class="hint">[Nombre del contacto]</span><br/><span class="hint">[Empresa]</span><br/><span class="hint">[Dirección]</span><br/><span class="hint">[Ciudad, Estado]</span></div>
+    <p class="salutation">Estimada/o <span class="hint">[nombre del contacto]</span>:</p>
+    <p>Mi nombre es Juan Carlos Contreras Gastélum. Conocí la vacante de <span class="hint">[nombre de la vacante]</span> a través de <span class="hint">[medio donde la encontré]</span> y le escribo para expresar mi interés en participar en su proceso de reclutamiento y selección.</p>
+    <p>Soy egresado de <strong>Negocios Globales</strong> apasionado por el análisis de datos y la inteligencia artificial. Manejo Python, SQL y automatización, y disfruto especialmente liderar equipos: en <strong>Stratify</strong> guié al mío con metodología CRISP-DM hasta un dashboard que ganó el 2º lugar y que presentamos con orgullo a los directivos de Ximple.co.</p>
+    <p>Adjunto mi CV para una revisión más detallada. No dude en comunicarse conmigo por teléfono al (646) 226-7777 o por correo a jccontrerasg08@gmail.com. Quedo al pendiente de su respuesta para coordinar una entrevista.</p>
+    <p>Gracias por su consideración.</p>
+    <div class="sign"><span>Saludos,</span><div class="name">Juan Carlos Contreras Gastélum</div></div>
+  </div>
+  <div class="letter" data-type="vacante" data-lang="en">
+    <p class="date"><span class="hint">[Date]</span></p>
+    <div class="recipient"><span class="hint">[Contact name]</span><br/><span class="hint">[Company]</span><br/><span class="hint">[Address]</span><br/><span class="hint">[City, State]</span></div>
+    <p class="salutation">Dear <span class="hint">[contact name]</span>,</p>
+    <p>My name is Juan Carlos Contreras Gastélum. I came across the <span class="hint">[job title]</span> opening through <span class="hint">[source where I found the vacancy]</span> and I am writing to express my interest in taking part in your recruitment and selection process.</p>
+    <p>I am a <strong>Global Business</strong> graduate who is truly passionate about data analytics and artificial intelligence. I work with Python, SQL and automation, and I especially enjoy leading teams: on <strong>Stratify</strong> I guided mine through the CRISP-DM methodology to a dashboard that won 2nd place and that we proudly presented to Ximple.co leadership.</p>
+    <p>I have attached my CV for a more detailed review. Please do not hesitate to reach me by phone at (646) 226-7777 or by email at jccontrerasg08@gmail.com. I remain available and look forward to coordinating an interview.</p>
+    <p>Thank you for your consideration.</p>
+    <div class="sign"><span>Best regards,</span><div class="name">Juan Carlos Contreras Gastélum</div></div>
+  </div>
+
+  <!-- ============ NETWORKING ============ -->
+  <div class="letter" data-type="networking" data-lang="es">
+    <p class="date"><span class="hint">[Fecha]</span></p>
+    <p class="salutation">Hola <span class="hint">[nombre de tu contacto]</span>:</p>
+    <p>Espero te encuentres bien. Como lo platicamos hace unos días, me tomé la libertad de escribir esta nota para que me ayudes a compartir mi CV con algunos de tus contactos y encontrar una oportunidad laboral. De verdad, muchas gracias por tu ayuda.</p>
+    <p>Soy egresado de <strong>Negocios Globales</strong> y me encanta usar el análisis de datos, la IA y herramientas como Python y SQL para resolver problemas reales; lo he vivido de cerca en proyectos de analítica y automatización que de verdad me emocionan.</p>
+    <p>Adjunto mi CV por si te resulta útil compartirlo. Cualquier persona interesada puede contactarme al (646) 226-7777 o a jccontrerasg08@gmail.com.</p>
+    <div class="sign"><span>Un abrazo,</span><div class="name">Juan Carlos Contreras Gastélum</div></div>
+  </div>
+  <div class="letter" data-type="networking" data-lang="en">
+    <p class="date"><span class="hint">[Date]</span></p>
+    <p class="salutation">Hi <span class="hint">[your contact name]</span>,</p>
+    <p>I hope you are doing well. As we discussed a few days ago, I took the liberty of writing this note so you can help me share my CV with some of your contacts and find a job opportunity. Truly, thank you very much for your help.</p>
+    <p>I am a <strong>Global Business</strong> graduate, and I love using data analytics, AI and tools like Python and SQL to solve real problems; I have lived it firsthand in analytics and automation projects that genuinely excite me.</p>
+    <p>I have attached my CV in case it is useful to pass along. Anyone interested can reach me at (646) 226-7777 or jccontrerasg08@gmail.com.</p>
+    <div class="sign"><span>Warm regards,</span><div class="name">Juan Carlos Contreras Gastélum</div></div>
+  </div>
+
+</section>
+</doc-page>
+<script src="lib/doc-page.js"></script>
+<script>
+  var LANG = 'es', TYPE = 'puesto';
+  function apply(){
+    document.documentElement.lang = LANG;
+    document.querySelectorAll('.lh-role [data-lang], .meta [data-lang]').forEach(function(el){ el.classList.toggle('show', el.dataset.lang === LANG); });
+    document.querySelectorAll('.letter').forEach(function(el){ el.classList.toggle('show', el.dataset.type === TYPE && el.dataset.lang === LANG); });
+    document.getElementById('lang-btn').textContent = LANG === 'es' ? 'EN' : 'ES';
+    document.querySelectorAll('.type-bar button').forEach(function(b){ b.classList.toggle('active', b.dataset.type === TYPE); });
+  }
+  function toggleLang(){ LANG = LANG === 'es' ? 'en' : 'es'; apply(); }
+  function setType(t){ TYPE = t; apply(); }
+  function fillDate(){
+    var now = new Date();
+    var es = now.toLocaleDateString('es-MX', { day:'numeric', month:'long', year:'numeric' });
+    var en = now.toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+    document.querySelectorAll('.letter[data-lang="es"] .date').forEach(function(el){ el.textContent = es.charAt(0).toUpperCase() + es.slice(1); });
+    document.querySelectorAll('.letter[data-lang="en"] .date').forEach(function(el){ el.textContent = en; });
+    document.querySelectorAll('.letter[data-lang="es"] .bizdate').forEach(function(el){ el.textContent = es.charAt(0).toUpperCase() + es.slice(1); });
+    document.querySelectorAll('.letter[data-lang="en"] .bizdate').forEach(function(el){ el.textContent = en; });
+  }
+  fillDate();
+  apply();
+  // make bracket placeholders editable (fill in browser, prints into the PDF)
+  document.querySelectorAll('.hint').forEach(function(el){ el.setAttribute('contenteditable','true'); el.setAttribute('spellcheck','false'); });
+</script>
+</body>
+</html>
