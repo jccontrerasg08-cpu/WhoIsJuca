@@ -116,7 +116,7 @@
 
   .name-block { position: relative; }
   .name-display {
-    font-size: clamp(72px, 16vw, 260px);
+    font-size: clamp(44px, 15vw, 260px);
   }
   .portrait {
     width: 100%;
@@ -644,7 +644,7 @@
   }
   .contact-wrap { max-width: 1600px; margin: 0 auto; }
   .contact-display {
-    font-size: clamp(60px, 12vw, 200px);
+    font-size: clamp(38px, 12vw, 200px);
     line-height: 0.9;
     margin-bottom: 48px;
   }
@@ -727,6 +727,29 @@
     .hero-meta { grid-template-columns: 1fr 1fr; }
   }
 
+  /* Let grid/flex tracks shrink below their content's min-content on small
+     screens instead of forcing the page wider than the viewport. */
+  .edu-card, .skill-cat, .project > *, .tl-item > *,
+  .about-grid > *, .two-col > *, .contact-item {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 520px) {
+    .hero-meta { grid-template-columns: 1fr; gap: 12px; }
+    .topbar { padding: 12px 16px; gap: 8px 12px; flex-wrap: wrap; }
+    .topbar .left { gap: 12px; }
+    .hero { padding-left: 16px; padding-right: 16px; }
+    section.s { padding-left: 16px; padding-right: 16px; }
+    .project { grid-template-columns: 40px 1fr; gap: 12px; padding: 24px 16px; }
+    .p-arrow { display: none; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .skill-cat { border-right: none !important; }
+    .skill-cat:not(:last-child) { border-bottom: 1px solid var(--hairline); }
+    .contact-grid { grid-template-columns: 1fr; }
+    .edu-card { padding: 24px 20px; }
+  }
+
   /* hide [data-lang] elements that don't match */
   [data-lang]:not(.show) { display: none; }
 </style>
@@ -799,7 +822,7 @@
         <div class="cv-dl-group" data-lang="en">
           <div class="cv-dl-row">
             <span class="cv-dl-label">Business Analyst</span>
-            <a href="downloads/CV%20JCC%20-%20Business%20Analyst%20-EN-.pdf" class="btn" target="_blank" rel="noopener"><span>PDF</span><span class="arrow">↗</span></a>
+            <a href="cv/cv-en.html" class="btn"><span>PDF</span><span class="arrow">↗</span></a>
             <a href="downloads/CV%20JCC%20-%20Business%20Analyst%20-EN-.docx" class="btn" download><span>Word</span><span class="arrow">↓</span></a>
           </div>
         </div>
