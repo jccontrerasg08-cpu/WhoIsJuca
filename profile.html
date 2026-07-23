@@ -1512,5 +1512,40 @@
   <span class="mono">v1.0</span>
 </footer>
 
+<script>
+  /* ----- Language toggle ----- */
+  function setLang(lang) {
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.toggle('show', el.dataset.lang === lang);
+    });
+    document.getElementById('lang-es').classList.toggle('active', lang === 'es');
+    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+  }
+  // initialize ES visible
+  document.querySelectorAll('[data-lang="es"]').forEach(el => el.classList.add('show'));
+
+  /* ----- Theme ----- */
+  function toggleTheme() {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    document.getElementById('theme-toggle').textContent = next === 'dark' ? '◑ LIGHT' : '◐ DARK';
+  }
+
+  /* ----- Project filters ----- */
+  document.querySelectorAll('#filters .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#filters .chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const f = chip.dataset.filter;
+      document.querySelectorAll('#projects-list .project').forEach(p => {
+        const tags = p.dataset.tags || '';
+        p.style.display = (f === 'all' || tags.includes(f)) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
