@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,12 +14,12 @@
     --fg: #0a0a0a;
     --muted: #6b6b6b;
     --line: #0a0a0a;
-    --accent: #2563eb;
+    --accent: #95eac4;
     --accent-fg: #ffffff;
     --card: #ffffff;
     --hairline: rgba(10,10,10,0.12);
-    --density: 1;
-    --display-weight: 900;
+    --density: 0.7;
+    --display-weight: 700;
   }
 
   [data-theme="dark"] {
@@ -742,7 +742,7 @@
   <div class="right">
     <button id="lang-es" class="active" onclick="setLang('es')">ES</button>
     <button id="lang-en" onclick="setLang('en')">EN</button>
-    <button id="theme-toggle" onclick="toggleTheme()" style="margin-left:12px;">◐ DARK</button>
+    <button id="theme-toggle" onclick="toggleTheme()" style="margin-left:12px;">◑ LIGHT</button>
   </div>
 </nav>
 
@@ -1511,124 +1511,6 @@
   <span data-lang="en">Built with HTML, CSS, JS · No frameworks</span>
   <span class="mono">v1.0</span>
 </footer>
-
-<!-- React + Babel for tweaks -->
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script type="text/babel" src="tweaks-panel.jsx"></script>
-
-<script>
-  /* ----- Language toggle ----- */
-  function setLang(lang) {
-    document.documentElement.setAttribute('lang', lang);
-    document.querySelectorAll('[data-lang]').forEach(el => {
-      el.classList.toggle('show', el.dataset.lang === lang);
-    });
-    document.getElementById('lang-es').classList.toggle('active', lang === 'es');
-    document.getElementById('lang-en').classList.toggle('active', lang === 'en');
-  }
-  // initialize ES visible
-  document.querySelectorAll('[data-lang="es"]').forEach(el => el.classList.add('show'));
-
-  /* ----- Theme ----- */
-  function toggleTheme() {
-    const cur = document.documentElement.getAttribute('data-theme');
-    const next = cur === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    document.getElementById('theme-toggle').textContent = next === 'dark' ? '◑ LIGHT' : '◐ DARK';
-  }
-
-  /* ----- Project filters ----- */
-  document.querySelectorAll('#filters .chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      document.querySelectorAll('#filters .chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      const f = chip.dataset.filter;
-      document.querySelectorAll('#projects-list .project').forEach(p => {
-        const tags = p.dataset.tags || '';
-        p.style.display = (f === 'all' || tags.includes(f)) ? '' : 'none';
-      });
-    });
-  });
-</script>
-
-<!-- Tweaks defaults -->
-<script>
-  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "accent": "#95eac4",
-    "displayWeight": 700,
-    "density": 0.7,
-    "darkMode": true,
-    "showAbout": true,
-    "showProjects": true,
-    "showExperience": true,
-    "showSkills": true,
-    "showEducation": true,
-    "showCerts": true
-  }/*EDITMODE-END*/;
-</script>
-
-<script type="text/babel">
-  const { useEffect } = React;
-
-  function applyTweaks(t) {
-    document.documentElement.style.setProperty('--accent', t.accent);
-    document.documentElement.style.setProperty('--display-weight', t.displayWeight);
-    document.documentElement.style.setProperty('--density', t.density);
-    document.documentElement.setAttribute('data-theme', t.darkMode ? 'dark' : 'light');
-    document.getElementById('theme-toggle').textContent = t.darkMode ? '◑ LIGHT' : '◐ DARK';
-    document.getElementById('about').style.display = t.showAbout ? '' : 'none';
-    document.getElementById('projects').style.display = t.showProjects ? '' : 'none';
-    document.getElementById('experience').style.display = t.showExperience ? '' : 'none';
-    document.getElementById('skills').style.display = t.showSkills ? '' : 'none';
-    document.getElementById('education').style.display = t.showEducation ? '' : 'none';
-    document.getElementById('certs').style.display = t.showCerts ? '' : 'none';
-  }
-
-  function TweaksApp() {
-    const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
-    useEffect(() => {
-      applyTweaks(tweaks);
-    }, [tweaks]);
-
-    return (
-      <TweaksPanel title="Tweaks">
-        <TweakSection title="Look & Feel">
-          <TweakColor label="Accent color" value={tweaks.accent} onChange={v => setTweak('accent', v)} />
-          <TweakRadio
-            label="Display weight"
-            value={tweaks.displayWeight}
-            onChange={v => setTweak('displayWeight', v)}
-            options={[
-              { label: 'Heavy', value: 700 },
-              { label: 'Massive', value: 900 }
-            ]}
-          />
-          <TweakSlider label="Density" min={0.7} max={1.4} step={0.05} value={tweaks.density} onChange={v => setTweak('density', v)} />
-          <TweakToggle label="Dark mode" checked={tweaks.darkMode} onChange={v => setTweak('darkMode', v)} />
-        </TweakSection>
-
-        <TweakSection title="Sections">
-          <TweakToggle label="About" checked={tweaks.showAbout} onChange={v => setTweak('showAbout', v)} />
-          <TweakToggle label="Projects" checked={tweaks.showProjects} onChange={v => setTweak('showProjects', v)} />
-          <TweakToggle label="Experience" checked={tweaks.showExperience} onChange={v => setTweak('showExperience', v)} />
-          <TweakToggle label="Skills" checked={tweaks.showSkills} onChange={v => setTweak('showSkills', v)} />
-          <TweakToggle label="Education" checked={tweaks.showEducation} onChange={v => setTweak('showEducation', v)} />
-          <TweakToggle label="Certifications" checked={tweaks.showCerts} onChange={v => setTweak('showCerts', v)} />
-        </TweakSection>
-      </TweaksPanel>
-    );
-  }
-
-  // Apply defaults immediately so first paint matches
-  applyTweaks(TWEAK_DEFAULTS);
-
-  const root = document.createElement('div');
-  document.body.appendChild(root);
-  ReactDOM.createRoot(root).render(<TweaksApp />);
-</script>
 
 </body>
 </html>
